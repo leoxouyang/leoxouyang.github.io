@@ -1,5 +1,7 @@
+
+{/* 页面元数据：定义变量供后续使用 */}
 ---
-const name = "Zhenghao Lu（欧阳小司）";
+const name = "Zhenghao Lu<br>欧阳小司";
 const email = "zhenghao_lu@outlook.com";
 const phone = "+86 15580863265";
 ---
@@ -12,6 +14,7 @@ const phone = "+86 15580863265";
   </head>
 
   <body>
+    {/* 顶部导航栏 */}
     <header class="topbar">
       <div class="topbar-inner">
         <a class="brand" href="/">{name}</a>
@@ -22,6 +25,7 @@ const phone = "+86 15580863265";
       </div>
     </header>
 
+    {/* 主要内容区域：展示名字和联系方式 */}
     <main class="center">
       <div class="stack">
         <div class="name">{name}</div>
@@ -31,10 +35,12 @@ const phone = "+86 15580863265";
     </main>
 
     <style>
+      /* 全局样式：去除默认边距，设置背景色，隐藏滚动条 */
       :global(html, body) {
         height: 100%;
         margin: 0;
         background: #fff;
+        overflow: hidden; /* 隐藏由于内容少而出现的多余滚动条，或者强制单屏显示 */
       }
 
       /* 顶栏 */
