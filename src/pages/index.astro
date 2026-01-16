@@ -1,11 +1,92 @@
----
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/">{name}</a>
+      <nav class="nav">
+        <a href="/blog">Blog</a>
+        <a href="/resume">Resume</a>
+      </nav>
+    </div>
+  </header>
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
----
+  <main class="center">
+    <div class="stack">
+      <div class="name">{name}</div>
+      <div class="sub">{email}</div>
+      <div class="sub">{phone}</div>
+    </div>
+  </main>
 
-<Layout>
-	<Welcome />
-</Layout>
+  <style>
+    :global(html, body) {
+      height: 100%;
+      margin: 0;
+      background: #fff;
+    }
+
+    /* 顶栏 */
+    .topbar{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+    }
+    .topbar-inner{
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand{
+      text-decoration: none;
+      color: #111;
+      font-weight: 600;
+      font-size: 14px;
+      opacity: 0.9;
+      white-space: nowrap;
+    }
+    .nav{
+      display: flex;
+      gap: 16px;
+    }
+    .nav a{
+      text-decoration: none;
+      color: #111;
+      font-size: 14px;
+      opacity: 0.75;
+    }
+    .nav a:hover{
+      opacity: 1;
+    }
+
+    .center {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      /* 给固定顶栏让位 */
+      padding-top: 72px;
+    }
+
+    .stack {
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .name {
+      font-size: 40px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+    }
+
+    .sub {
+      font-size: 16px;
+      opacity: 0.85;
+    }
+  </style>
+</body>
