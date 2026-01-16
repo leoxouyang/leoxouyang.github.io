@@ -1,5 +1,3 @@
-
-{/* 页面元数据：定义变量供后续使用 */}
 ---
 const name = "Zhenghao Lu<br>欧阳小司";
 const email = "zhenghao_lu@outlook.com";
@@ -41,6 +39,7 @@ const phone = "+86 15580863265";
         margin: 0;
         background: #fff;
         overflow: hidden; /* 隐藏由于内容少而出现的多余滚动条，或者强制单屏显示 */
+        font-family: Arial, sans-serif; /* 设置全局字体为 Arial */
       }
 
       /* 顶栏 */
@@ -97,14 +96,14 @@ const phone = "+86 15580863265";
       }
 
       .name {
-        font-size: 40px;
+        font-size: 16pt; /* 名字字号改为 16磅 */
         font-weight: 600;
         letter-spacing: 0.02em;
         margin-bottom: 10px;
       }
 
       .sub {
-        font-size: 16px;
+        font-size: 11pt; /* 联系方式调整为 11磅，保持视觉层级 */
         opacity: 0.85;
       }
     </style>
