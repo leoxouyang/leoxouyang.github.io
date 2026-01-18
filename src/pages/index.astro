@@ -1,5 +1,5 @@
 ---
-const name = "Zhenghao Lu<";
+const name = "Zhenghao Lu";
 const email = "zhenghao_lu@outlook.com";
 ---
 
@@ -32,6 +32,12 @@ const email = "zhenghao_lu@outlook.com";
 
     <style>
       /* 全局样式：去除默认边距，设置背景色，隐藏滚动条 */
+      :global(*),
+      :global(*::before),
+      :global(*::after) {
+        box-sizing: border-box;
+      }
+
       :global(html, body) {
         height: 100%;
         margin: 0;
@@ -84,8 +90,6 @@ const email = "zhenghao_lu@outlook.com";
         display: grid;
         place-items: center;
         padding: 24px;
-        /* 给固定顶栏让位 */
-        padding-top: 72px;
       }
 
       .stack {
