@@ -7,6 +7,9 @@ on:
     branches: [ main ]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
+  # Allows triggering from markdown-resume repository
+  repository_dispatch:
+    types: [update-resume]
 
 # Allow this job to clone the repo and create a page deployment
 permissions:
@@ -20,6 +23,35 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+        
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Enable pnpm
+        run: corepack enable
+
+      - name: Clone resume repo
+        run: |
+          rm -rf /tmp/markdown-resume
+          git clone https://github.com/leoxouyang/markdown-resume.git /tmp/markdown-resume
+
+      - name: Build resume
+        working-directory: /tmp/markdown-resume
+        env:
+          NUXT_APP_BASE_URL: '/resume/'
+        run: |
+          pnpm install
+          pnpm build:pkg
+          pnpm build
+
+      - name: Copy to Astro public
+        run: |
+          mkdir -p public/resume
+          cp -R /tmp/markdown-resume/site/.output/public/* public/resume/
+          touch public/resume/.nojekyll
+
       - name: Install, build, and upload your site
         uses: withastro/action@v3
         # with:
