@@ -42,6 +42,7 @@ jobs:
         env:
           NUXT_APP_BASE_URL: '/resume/'
         run: |
+          sed -i 's|/markdown-resume/|/resume/|g' site/nuxt.config.ts
           pnpm install
           pnpm build:pkg
           pnpm build
