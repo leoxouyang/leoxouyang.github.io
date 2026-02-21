@@ -43,6 +43,7 @@ jobs:
           NUXT_APP_BASE_URL: '/resume/'
         run: |
           sed -i 's|/markdown-resume/|/resume/|g' site/nuxt.config.ts
+          sed -i '/export const CJK_FONTS: Font\[\] = \[/a \ \ {\n\ \ \ \ name: "PingFang SC (苹方)",\n\ \ \ \ fontFamily: "PingFang SC"\n\ \ },\n\ \ {\n\ \ \ \ name: "SimHei (深色黑体)",\n\ \ \ \ fontFamily: "SimHei"\n\ \ },\n\ \ {\n\ \ \ \ name: "Microsoft YaHei (微软雅黑)",\n\ \ \ \ fontFamily: "Microsoft YaHei"\n\ \ },' site/src/utils/constants/data.ts
           pnpm install
           pnpm build:pkg
           pnpm build
@@ -52,6 +53,7 @@ jobs:
           mkdir -p public/resume
           cp -R /tmp/markdown-resume/site/.output/public/* public/resume/
           touch public/resume/.nojekyll
+          cp public/resume/index.html public/resume/404.html
 
       - name: Install, build, and upload your site
         uses: withastro/action@v3
