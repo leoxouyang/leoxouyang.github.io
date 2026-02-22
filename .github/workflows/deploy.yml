@@ -46,6 +46,8 @@ jobs:
           sed -i '/export const CJK_FONTS: Font\[\] = \[/a \ \ {\n\ \ \ \ name: "PingFang SC (苹方)",\n\ \ \ \ fontFamily: "PingFang SC"\n\ \ },\n\ \ {\n\ \ \ \ name: "SimHei (深色黑体)",\n\ \ \ \ fontFamily: "SimHei"\n\ \ },\n\ \ {\n\ \ \ \ name: "Microsoft YaHei (微软雅黑)",\n\ \ \ \ fontFamily: "Microsoft YaHei"\n\ \ },' site/src/utils/constants/data.ts
           sed -i 's|http://github.com/junian/markdown-resume/|https://github.com/leoxouyang/markdown-resume|g' site/src/components/shared/Header.vue
           sed -i 's|name: "Verdana"|name: "Arial"|g' site/src/utils/constants/default.ts
+          sed -i 's|font-family: ${fontEN}, ${fontCJK}|font-family: "${fontEN}", "${fontCJK}"|g' site/src/utils/css.ts
+          sed -i 's|12px ${font}|12px "${font}"|g' site/src/utils/font.ts
           cat > site/configs/i18n.ts << 'EOF'
           import type { NuxtI18nOptions } from "@nuxtjs/i18n";
           export const i18n: NuxtI18nOptions = {
