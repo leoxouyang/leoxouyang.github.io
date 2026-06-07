@@ -201,7 +201,9 @@ const { frontmatter } = Astro.props;
                 text-align: center;
                 color: #fff;
                 padding: 24px;
-                max-width: 800px;
+                width: 80%;
+                max-width: none;
+                margin: 0 auto;
                 z-index: 1;
             }
 
@@ -219,10 +221,11 @@ const { frontmatter } = Astro.props;
 
             /* 主要内容区域 */
             .container {
-                max-width: 700px;
+                width: 80%;
+                max-width: none;
                 margin: 0 auto;
                 /* Adjust padding based on whether hero exists or not */
-                padding: 48px 24px 48px;
+                padding: 48px 0 48px;
             }
 
             /* If no hero image, add top padding to account for fixed header */
