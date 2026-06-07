@@ -1,5 +1,16 @@
 ---
-const posts = await Astro.glob("./posts/*.md");
+import LanguageToggle from "../components/LanguageToggle.astro";
+
+const posts = Object.values(
+    import.meta.glob("./posts/*.md", { eager: true }),
+) as Array<{
+    url: string;
+    frontmatter: {
+        title: string;
+        date: string;
+        description?: string;
+    };
+}>;
 const name = "欧阳小司的博客";
 
 // Sort posts by date, newest first
@@ -10,11 +21,11 @@ posts.sort(
 );
 ---
 
-<html lang="zh-CN">
+<html lang="zh-CN" data-lang="zh">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" href="/images/site-logo.png" />
         <title>{name}</title>
     </head>
 
@@ -22,22 +33,37 @@ posts.sort(
         {/* 顶部导航栏 */}
         <header class="topbar">
             <div class="topbar-inner">
-                <a class="brand" href="/">Zhenghao Lu</a>
-                <nav class="nav">
-                    <a href="/resume">Resume</a>
-                    <a
-                        href="https://www.linkedin.com/in/zhenghao-lu-a6a396372/"
-                        rel="noreferrer">LinkedIn</a
-                    >
-                    <a href="/欧阳小司" style="opacity: 1; font-weight: 600;"
-                        >欧阳小司的博客</a
-                    >
-                </nav>
+                <a class="brand" href="/">
+                    <img
+                        class="brand-logo"
+                        src="/images/site-logo.png"
+                        alt="Zhenghao Lu"
+                        width="40"
+                        height="40"
+                    />
+                </a>
+                <div class="topbar-actions">
+                    <nav class="nav">
+                        <a href="/ZhenghaoLu-CV.pdf">Resume</a>
+                        <a
+                            href="https://www.linkedin.com/in/zhenghao-lu-a6a396372/"
+                            rel="noreferrer">LinkedIn</a
+                        >
+                        <a href="/#projects">Projects</a>
+                        <a href="/research">Research</a>
+                        <a href="/欧阳小司" style="opacity: 1; font-weight: 600;">
+                            <span data-lang="zh">欧阳小司的博客</span>
+                            <span data-lang="en">Thoughts</span>
+                        </a>
+                    </nav>
+                    <LanguageToggle />
+                </div>
             </div>
         </header>
 
         <main class="container">
-            <h1>文章列表</h1>
+            <h1 data-lang="zh">文章列表</h1>
+            <h1 data-lang="en">Thoughts</h1>
             <ul class="post-list">
                 {
                     posts.map((post) => (
@@ -66,6 +92,7 @@ posts.sort(
 
             :global(html, body) {
                 min-height: 100%;
+                width: 100%;
                 margin: 0;
                 background: #fff;
                 font-family:
@@ -88,20 +115,24 @@ posts.sort(
                 z-index: 100;
             }
             .topbar-inner {
-                max-width: 900px;
-                margin: 0 auto;
-                padding: 14px 24px;
+                width: 100%;
+                padding: 12px clamp(18px, 4vw, 48px);
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
             }
             .brand {
+                display: inline-flex;
+                align-items: center;
                 text-decoration: none;
                 color: #111;
-                font-weight: 600;
-                font-size: 14px;
-                opacity: 0.9;
-                white-space: nowrap;
+                opacity: 1;
+            }
+            .brand-logo {
+                display: block;
+                width: 40px;
+                height: 40px;
+                object-fit: contain;
             }
             .nav {
                 display: flex;

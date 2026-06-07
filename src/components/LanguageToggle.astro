@@ -1,0 +1,108 @@
+<div class="language-switch" aria-label="Language switch">
+  <button type="button" data-lang-option="zh" aria-pressed="true">中</button>
+  <span aria-hidden="true">/</span>
+  <button type="button" data-lang-option="en" aria-pressed="false">EN</button>
+</div>
+
+<script is:inline>
+  (() => {
+    const storageKey = "leoxouyang-language";
+    const languages = new Set(["zh", "en"]);
+
+    const getStoredLanguage = () => {
+      try {
+        return localStorage.getItem(storageKey);
+      } catch {
+        return null;
+      }
+    };
+
+    const storeLanguage = (language) => {
+      try {
+        localStorage.setItem(storageKey, language);
+      } catch {
+        return;
+      }
+    };
+
+    const applyLanguage = (language) => {
+      const nextLanguage = languages.has(language) ? language : "zh";
+      document.documentElement.dataset.lang = nextLanguage;
+      document.documentElement.lang = nextLanguage === "zh" ? "zh-CN" : "en";
+
+      document.querySelectorAll("[data-lang-option]").forEach((button) => {
+        button.setAttribute(
+          "aria-pressed",
+          String(button.dataset.langOption === nextLanguage),
+        );
+      });
+    };
+
+    const initialLanguage = getStoredLanguage() || "zh";
+    applyLanguage(initialLanguage);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      applyLanguage(getStoredLanguage() || initialLanguage);
+
+      document.querySelectorAll("[data-lang-option]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const nextLanguage = button.dataset.langOption || "zh";
+          storeLanguage(nextLanguage);
+          applyLanguage(nextLanguage);
+        });
+      });
+    });
+  })();
+</script>
+
+<style is:global>
+  html[data-lang="zh"] [data-lang="en"],
+  html[data-lang="en"] [data-lang="zh"] {
+    display: none !important;
+  }
+
+  .topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .language-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #777;
+    font-size: 12px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .language-switch button {
+    appearance: none;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
+    color: #777;
+    cursor: pointer;
+    font: inherit;
+    line-height: 1;
+  }
+
+  .language-switch button[aria-pressed="true"] {
+    color: #111;
+    font-weight: 600;
+  }
+
+  .language-switch button:hover {
+    color: #111;
+  }
+
+  @media (max-width: 720px) {
+    .topbar-actions {
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+    }
+  }
+</style>

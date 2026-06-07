@@ -1,13 +1,34 @@
 ---
+import LanguageToggle from "../components/LanguageToggle.astro";
+
 const name = "Zhenghao Lu";
 const email = "zhenghao_lu@outlook.com";
+const resumePdf = "/ZhenghaoLu-CV.pdf";
+const linkedinUrl = "https://www.linkedin.com/in/zhenghao-lu-a6a396372/";
+const posts = Object.values(
+  import.meta.glob("./posts/*.md", { eager: true }),
+) as Array<{
+  url: string;
+  frontmatter: {
+    title: string;
+    date: string;
+    description?: string;
+  };
+}>;
+const latestPosts = posts
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).valueOf() -
+      new Date(a.frontmatter.date).valueOf(),
+  )
+  .slice(0, 3);
 ---
 
-<html lang="zh-CN">
+<html lang="zh-CN" data-lang="zh">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/images/site-logo.png" />
     <title>{name}</title>
   </head>
 
@@ -15,25 +36,192 @@ const email = "zhenghao_lu@outlook.com";
     {/* 顶部导航栏 */}
     <header class="topbar">
       <div class="topbar-inner">
-        <a class="brand" href="/">{name}</a>
-        <nav class="nav">
-          <a href="/resume">Resume</a>
-          <a href="https://www.linkedin.com/in/zhenghao-lu-a6a396372/" rel="noreferrer">LinkedIn</a>
-          <a href="/欧阳小司">欧阳小司的博客</a>
-        </nav>
+        <a class="brand" href="/">
+          <img
+            class="brand-logo"
+            src="/images/site-logo.png"
+            alt={name}
+            width="40"
+            height="40"
+          />
+        </a>
+        <div class="topbar-actions">
+          <nav class="nav">
+            <a href={resumePdf}>Resume</a>
+            <a href={linkedinUrl} rel="noreferrer">LinkedIn</a>
+            <a href="/#projects">Projects</a>
+            <a href="/research">Research</a>
+            <a href="/欧阳小司">
+              <span data-lang="zh">欧阳小司的博客</span>
+              <span data-lang="en">Thoughts</span>
+            </a>
+          </nav>
+          <LanguageToggle />
+        </div>
       </div>
     </header>
 
-    {/* 主要内容区域：展示名字和联系方式 */}
-    <main class="center">
-      <div class="stack">
-        <div class="name">{name}</div>
-        <div class="sub">{email}</div>
-      </div>
+    <main>
+      <section class="hero" aria-label="Intro">
+        <div class="stack">
+          <div class="name">
+            <span data-lang="zh">陆政豪</span>
+            <span data-lang="en">{name}</span>
+          </div>
+          <div class="sub">{email}</div>
+        </div>
+        <a class="scroll-cue" href="#profile" aria-label="Scroll to profile">
+          <span data-lang="zh">下滑</span>
+          <span data-lang="en">Scroll</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+      </section>
+
+      <section id="profile" class="section">
+        <div class="section-inner">
+          <p class="eyebrow">Profile</p>
+          <h1 data-lang="zh">我是陆政豪，也可以叫我欧阳小司</h1>
+          <h1 data-lang="en">I am Zhenghao Lu.</h1>
+          <p class="lead" data-lang="zh">
+            如果你想快速了解我，可以点击
+            <a href={resumePdf}>CV</a>，也可以点击
+            <a href={linkedinUrl} rel="noreferrer">LinkedIn</a>
+            了解我的职业轨迹；如果你想了解我如何思考，可以读「
+            <a href="/欧阳小司">欧阳小司的博客</a>」。
+          </p>
+          <p class="lead" data-lang="en">
+            For a quick overview, read my <a href={resumePdf}>CV</a> or visit my <a
+              href={linkedinUrl}
+              rel="noreferrer">LinkedIn</a
+            >. For a better sense of how I think, read my
+            <a href="/欧阳小司">Thoughts</a>.
+          </p>
+
+          <div class="quick-links" aria-label="Quick links">
+            <a href={resumePdf}>CV</a>
+            <a href={linkedinUrl} rel="noreferrer">LinkedIn</a>
+            <a href={`mailto:${email}`}>Email</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section section-muted">
+        <div class="section-inner">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Projects</p>
+              <h2>Selected work</h2>
+            </div>
+          </div>
+
+          <div class="empty-panel">
+            <p class="empty-title" data-lang="zh">项目内容正在整理中。</p>
+            <p class="empty-title" data-lang="en">
+              Projects are being organized.
+            </p>
+            <p data-lang="zh">
+              这一部分会展示精选项目，包括问题、角色、工具和结果。目前先保留一个干净的占位区，避免编造还没有整理好的项目细节。
+            </p>
+            <p data-lang="en">
+              This area will highlight selected projects with the problem, role,
+              tools, and outcome. For now, it stays as a clean placeholder
+              instead of inventing project details.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Research</p>
+              <h1 data-lang="zh">行为研究</h1>
+              <h2 data-lang="en">Research on Human Behavior</h2>
+            </div>
+            <a class="text-link" href="/research">
+              <span data-lang="zh">查看研究</span>
+              <span data-lang="en">View research</span>
+            </a>
+          </div>
+
+          <div class="research-preview">
+            <p data-lang="zh">
+              我的研究关注人在真实生活情境中如何经历压力、支持、动机和幸福感。在过往的研究中，我使用问卷、日记研究和统计建模方法识别行为模式、心理需求与群体差异。这些研究也延伸到我对用户研究的兴趣：深入理解人，才能设计更好的系统、服务和支持体验。
+            </p>
+            <p data-lang="en">
+              My research focuses on how people experience stress, support,
+              motivation, and well-being in real-life contexts. In my research,
+              I use survey, diary, and statistical modeling methods to identify
+              behavioral patterns, psychological needs, and group differences.
+              These projects inform my broader interest in user research:
+              understanding people deeply enough to design better systems,
+              services, and support experiences.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Notes</p>
+              <h2>Thoughts</h2>
+            </div>
+            <a class="text-link" href="/欧阳小司">
+              <span data-lang="zh">全部文章</span>
+              <span data-lang="en">All thoughts</span>
+            </a>
+          </div>
+
+          <div class="post-list">
+            {
+              latestPosts.length > 0 ? (
+                latestPosts.map((post) => (
+                  <a class="post-item" href={post.url}>
+                    <span>
+                      <strong>{post.frontmatter.title}</strong>
+                      {post.frontmatter.description && (
+                        <small>{post.frontmatter.description}</small>
+                      )}
+                    </span>
+                    <time>{post.frontmatter.date}</time>
+                  </a>
+                ))
+              ) : (
+                <p class="empty-copy">
+                  <span data-lang="zh">还没有文章。</span>
+                  <span data-lang="en">No articles yet.</span>
+                </p>
+              )
+            }
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact">
+        <div class="section-inner">
+          <p class="eyebrow">Contact</p>
+          <h2 data-lang="zh">联系我</h2>
+          <h2 data-lang="en">Reach me</h2>
+          <div class="contact-links">
+            <a href={`mailto:${email}`}>{email}</a>
+            <a href={linkedinUrl} rel="noreferrer">LinkedIn</a>
+            <a href={resumePdf}>PDF Resume</a>
+          </div>
+          <p class="tool-note" data-lang="zh">
+            简历生成器作为内部工具保留，不放在公开导航里。
+          </p>
+          <p class="tool-note" data-lang="en">
+            The resume builder is kept as an internal tool and is not part of
+            the public navigation.
+          </p>
+        </div>
+      </section>
     </main>
 
     <style>
-      /* 全局样式：去除默认边距，设置背景色，隐藏滚动条 */
       :global(*),
       :global(*::before),
       :global(*::after) {
@@ -41,20 +229,21 @@ const email = "zhenghao_lu@outlook.com";
       }
 
       :global(html, body) {
-        height: 100%;
+        min-height: 100%;
+        width: 100%;
         margin: 0;
         background: #fff;
-        overflow: hidden; /* 隐藏由于内容少而出现的多余滚动条，或者强制单屏显示 */
+        color: #111;
+        scroll-behavior: smooth;
         font-family:
           system-ui,
           -apple-system,
           BlinkMacSystemFont,
           "Segoe UI",
           Roboto,
-          sans-serif; /* 使用系统字体以获得最佳中文显示效果 */
+          sans-serif;
       }
 
-      /* 顶栏 */
       .topbar {
         position: fixed;
         top: 0;
@@ -62,22 +251,27 @@ const email = "zhenghao_lu@outlook.com";
         right: 0;
         background: #fff;
         border-bottom: 1px solid #eee;
+        z-index: 100;
       }
       .topbar-inner {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 14px 24px;
+        width: 100%;
+        padding: 12px clamp(18px, 4vw, 48px);
         display: flex;
         align-items: center;
         justify-content: space-between;
       }
       .brand {
+        display: inline-flex;
+        align-items: center;
         text-decoration: none;
         color: #111;
-        font-weight: 600;
-        font-size: 14px;
-        opacity: 0.9;
-        white-space: nowrap;
+        opacity: 1;
+      }
+      .brand-logo {
+        display: block;
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
       }
       .nav {
         display: flex;
@@ -97,11 +291,12 @@ const email = "zhenghao_lu@outlook.com";
         opacity: 1;
       }
 
-      .center {
-        height: 100%;
+      .hero {
+        min-height: 100vh;
         display: grid;
         place-items: center;
-        padding: 24px;
+        padding: 80px 24px 64px;
+        position: relative;
       }
 
       .stack {
@@ -110,15 +305,257 @@ const email = "zhenghao_lu@outlook.com";
       }
 
       .name {
-        font-size: 16pt; /* 名字字号改为 16磅 */
+        font-size: 16pt;
         font-weight: 600;
         letter-spacing: 0.02em;
         margin-bottom: 10px;
       }
 
       .sub {
-        font-size: 11pt; /* 联系方式调整为 11磅，保持视觉层级 */
+        font-size: 11pt;
         opacity: 0.85;
+      }
+
+      .scroll-cue {
+        position: absolute;
+        left: 50%;
+        bottom: 28px;
+        transform: translateX(-50%);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #555;
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+        opacity: 0.78;
+      }
+
+      .scroll-cue:hover {
+        opacity: 1;
+      }
+
+      .section {
+        padding: 72px 24px;
+        border-top: 1px solid #f1f1f1;
+        scroll-margin-top: 96px;
+      }
+
+      .section-muted {
+        background: #fafafa;
+      }
+
+      .section-inner {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: #777;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+        color: #111;
+        font-weight: 600;
+        line-height: 1.25;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        max-width: 640px;
+        font-size: 30px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      .lead {
+        max-width: 640px;
+        margin: 20px 0 0;
+        color: #444;
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      .quick-links,
+      .contact-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .quick-links a,
+      .contact-links a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 38px;
+        padding: 0 14px;
+        border: 1px solid #ddd;
+        color: #111;
+        font-size: 14px;
+        text-decoration: none;
+      }
+
+      .quick-links a:hover,
+      .contact-links a:hover {
+        border-color: #111;
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 28px;
+      }
+
+      .text-link {
+        color: #111;
+        font-size: 14px;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        white-space: nowrap;
+      }
+
+      .empty-panel {
+        border: 1px solid #e8e8e8;
+        padding: 24px;
+        background: #fff;
+        color: #555;
+        line-height: 1.7;
+      }
+
+      .empty-panel p,
+      .empty-copy {
+        margin: 0;
+      }
+
+      .empty-title {
+        color: #111;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .research-preview {
+        max-width: 680px;
+        color: #444;
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      .research-preview p {
+        margin: 0;
+      }
+
+      .post-list {
+        display: grid;
+        gap: 0;
+        border-top: 1px solid #eee;
+      }
+
+      .post-item {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 18px 0;
+        border-bottom: 1px solid #eee;
+        color: #111;
+        text-decoration: none;
+      }
+
+      .post-item:hover strong {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .post-item span {
+        display: grid;
+        gap: 6px;
+      }
+
+      .post-item strong {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .post-item small {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .post-item time {
+        flex: 0 0 auto;
+        color: #888;
+        font-size: 14px;
+        font-feature-settings: "tnum";
+        white-space: nowrap;
+      }
+
+      .contact {
+        padding-bottom: 96px;
+      }
+
+      .tool-note {
+        margin: 24px 0 0;
+        color: #777;
+        font-size: 13px;
+      }
+
+      .tool-note a {
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      @media (max-width: 640px) {
+        .topbar-inner {
+          align-items: flex-start;
+          gap: 12px;
+          padding: 12px 18px;
+        }
+
+        .nav {
+          justify-content: flex-end;
+          flex-wrap: wrap;
+          gap: 10px 14px;
+        }
+
+        .nav a {
+          font-size: 13px;
+        }
+
+        .hero {
+          padding-inline: 18px;
+        }
+
+        .section {
+          padding: 56px 18px;
+        }
+
+        h1 {
+          font-size: 25px;
+        }
+
+        h2 {
+          font-size: 22px;
+        }
+
+        .section-heading,
+        .post-item {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 10px;
+        }
       }
     </style>
   </body>

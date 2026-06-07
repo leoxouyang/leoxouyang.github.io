@@ -1,8 +1,12 @@
-<html lang="zh-CN">
+---
+import LanguageToggle from "../components/LanguageToggle.astro";
+---
+
+<html lang="zh-CN" data-lang="zh">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/images/site-logo.png" />
     <title>Blog | Zhenghao Lu</title>
   </head>
 
@@ -10,16 +14,127 @@
     {/* 顶部导航栏 */}
     <header class="topbar">
       <div class="topbar-inner">
-        <a class="brand" href="/">Zhenghao Lu</a>
-        <nav class="nav">
-          <a href="/resume">Resume</a>
-          <a href="https://www.linkedin.com/in/zhenghao-lu-a6a396372/" rel="noreferrer">LinkedIn</a>
-          <a href="/欧阳小司">欧阳小司的博客</a>
-        </nav>
+        <a class="brand" href="/">
+          <img
+            class="brand-logo"
+            src="/images/site-logo.png"
+            alt="Zhenghao Lu"
+            width="40"
+            height="40"
+          />
+        </a>
+        <div class="topbar-actions">
+          <nav class="nav">
+            <a href="/ZhenghaoLu-CV.pdf">Resume</a>
+            <a href="https://www.linkedin.com/in/zhenghao-lu-a6a396372/" rel="noreferrer">LinkedIn</a>
+            <a href="/#projects">Projects</a>
+            <a href="/research">Research</a>
+            <a href="/欧阳小司">
+              <span data-lang="zh">欧阳小司的博客</span>
+              <span data-lang="en">Thoughts</span>
+            </a>
+          </nav>
+          <LanguageToggle />
+        </div>
       </div>
     </header>
     <main class="container">
-      <h1>Blog</h1>
+      <h1 data-lang="zh">博客</h1>
+      <h1 data-lang="en">Blog</h1>
     </main>
+
+    <style>
+      :global(*),
+      :global(*::before),
+      :global(*::after) {
+        box-sizing: border-box;
+      }
+
+      :global(html, body) {
+        min-height: 100%;
+        width: 100%;
+        margin: 0;
+        background: #fff;
+        color: #111;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+      }
+
+      .topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-bottom: 1px solid #eee;
+        z-index: 100;
+      }
+      .topbar-inner {
+        width: 100%;
+        padding: 12px clamp(18px, 4vw, 48px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        color: #111;
+        opacity: 1;
+      }
+      .brand-logo {
+        display: block;
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+      }
+      .nav {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+      .nav a {
+        text-decoration: none;
+        color: #111;
+        font-size: 14px;
+        opacity: 0.75;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+      }
+      .nav a:hover {
+        opacity: 1;
+      }
+
+      .container {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 96px 24px 48px;
+      }
+
+      @media (max-width: 640px) {
+        .topbar-inner {
+          align-items: flex-start;
+          gap: 12px;
+          padding: 12px 18px;
+        }
+
+        .nav {
+          justify-content: flex-end;
+          flex-wrap: wrap;
+          gap: 10px 14px;
+        }
+
+        .nav a {
+          font-size: 13px;
+        }
+      }
+    </style>
   </body>
 </html>
