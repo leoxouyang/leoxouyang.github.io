@@ -49,10 +49,6 @@ const latestPosts = posts
           <nav class="nav">
             <a href={resumePdf}>CV</a>
             <a href={linkedinUrl} rel="noreferrer">LinkedIn</a>
-            <a href="/projects">
-              <span data-lang="zh">项目</span>
-              <span data-lang="en">Projects</span>
-            </a>
             <a href="/research">
               <span data-lang="zh">研究</span>
               <span data-lang="en">Research</span>
@@ -107,33 +103,6 @@ const latestPosts = posts
             <a href={resumePdf}>CV</a>
             <a href={linkedinUrl} rel="noreferrer">LinkedIn</a>
             <a href={`mailto:${email}`}>Email</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="projects" class="section">
-        <div class="section-inner">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Projects</p>
-              <h2>Selected work</h2>
-            </div>
-            <a class="text-link" href="/projects">
-              <span data-lang="zh">查看项目</span>
-              <span data-lang="en">View projects</span>
-            </a>
-          </div>
-
-          <div class="section-preview">
-            <p data-lang="zh">
-              这里会集中整理我做过的项目、工具和实验。首页先保留一个简短入口；完整项目列表会放在单独页面，方便之后逐步补充截图、背景、方法和结果。
-            </p>
-            <p data-lang="en">
-              This section collects projects, tools, and experiments. The
-              homepage keeps a short overview, while the full project list lives
-              on a separate page where screenshots, context, methods, and
-              outcomes can be added over time.
-            </p>
           </div>
         </div>
       </section>
@@ -473,7 +442,6 @@ const latestPosts = posts
         margin-bottom: 8px;
       }
 
-      .section-preview,
       .research-preview {
         max-width: none;
         color: #444;
@@ -481,7 +449,6 @@ const latestPosts = posts
         line-height: 1.75;
       }
 
-      .section-preview p,
       .research-preview p {
         margin: 0;
       }
