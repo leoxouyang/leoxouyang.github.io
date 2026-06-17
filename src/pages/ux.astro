@@ -1,0 +1,1114 @@
+---
+import LanguageToggle from "../components/LanguageToggle.astro";
+
+const name = "Zhenghao Lu";
+const email = "zhenghao_lu@outlook.com";
+const resumePdf = "/ZhenghaoLu-CV.pdf";
+const linkedinUrl = "https://www.linkedin.com/in/zhenghao-lu-a6a396372/";
+
+const case1Figures = [
+  {
+    title: "Conceptual model",
+    src: "/images/ux/case-1/model.png",
+    alt: "Within-person mediation model, moderation model, and lagged model for hope, exam stress, psychological need satisfaction, and affect.",
+    featured: true,
+  },
+  {
+    title: "Hope x stress x need satisfaction: negative affect",
+    src: "/images/ux/case-1/three-way-negative-affect.png",
+    alt: "Three-way interaction plot showing exam stress and need satisfaction effects on negative affect across low and high hope levels.",
+  },
+  {
+    title: "Hope x stress x need satisfaction: positive affect",
+    src: "/images/ux/case-1/three-way-positive-affect.png",
+    alt: "Three-way interaction plot showing exam stress and need satisfaction effects on positive affect across low and high hope levels.",
+  },
+  {
+    title: "Gender moderation: negative affect",
+    src: "/images/ux/case-1/gender-negative-affect.png",
+    alt: "Regression plot showing gender moderation of the effect of daily hope on negative affect.",
+  },
+  {
+    title: "Gender moderation: positive affect",
+    src: "/images/ux/case-1/gender-positive-affect.png",
+    alt: "Regression plot showing gender moderation of the effect of daily hope on positive affect.",
+  },
+];
+
+const cases = [
+  {
+    label: "Case 1",
+    title:
+      "Case 1: Understanding Daily Emotional Experiences in High School Students",
+    subtitle:
+      "A 7-day diary study on subjective well-being, hope, academic stress, and daily need satisfaction.",
+    context:
+      "High school students' well-being is not static. Their emotional experiences may fluctuate from day to day depending on academic stress, hope, and psychological need satisfaction. This project aimed to understand these daily dynamics using a longitudinal diary design.",
+    role: "Co-Principal Investigator",
+    methods: [
+      "7-day diary study",
+      "Repeated-measures data cleaning",
+      "Within-person and between-person decomposition",
+      "Multilevel modeling in R",
+      "Data visualization and result interpretation",
+    ],
+    overview: [
+      "292 valid participants",
+      "1,752 daily observations",
+      "7 consecutive diary waves",
+      "Repeated-measures psychological data",
+    ],
+    questions: [
+      "How do students' well-being and emotional experiences fluctuate across days?",
+      "How are daily hope and academic stress associated with daily well-being?",
+      "How can we distinguish within-person changes from between-person differences?",
+    ],
+    process: [
+      {
+        title: "Data Preparation",
+        text: "Screened and cleaned repeated-measures data to ensure accuracy, completeness, and consistency.",
+      },
+      {
+        title: "Data Structuring",
+        text: "Organized diary data into an analysis-ready format suitable for daily-level modeling.",
+      },
+      {
+        title: "Statistical Modeling",
+        text: "Conducted multilevel modeling in R to distinguish within-person fluctuations from between-person differences.",
+      },
+      {
+        title: "Research Communication",
+        text: "Contributed to result interpretation, visualization, and manuscript preparation.",
+      },
+    ],
+    insights: [
+      {
+        title:
+          "Student well-being should be understood as a dynamic daily experience, not only as a stable trait.",
+        text: "Students may experience meaningful day-to-day changes in emotional states, which suggests the importance of tracking experiences over time rather than relying only on one-time measurements.",
+      },
+      {
+        title: "Hope may function as a daily psychological resource.",
+        text: "Daily hope can help explain why students feel better on some days than others, highlighting the value of psychological resources in stressful academic contexts.",
+      },
+      {
+        title:
+          "Academic stress needs to be interpreted at both individual and daily levels.",
+        text: "Some students may generally experience higher stress than others, while the same student may also experience unusually stressful days. These two patterns require different interpretations.",
+      },
+    ],
+    figures: case1Figures,
+  },
+  {
+    label: "Case 2",
+    title:
+      "Case 2: Latent Profiles of Job Burnout among Female Kindergarten Teachers",
+    subtitle: "A person-centered research case using latent profile analysis.",
+    context:
+      "Burnout is not experienced in the same way by all teachers. Instead of assuming a single average pattern, this project used a person-centered approach to identify distinct burnout profiles among female kindergarten teachers.",
+    role: "Co-Principal Investigator",
+    methods: [
+      "Behavioral research",
+      "Latent profile analysis in R",
+      "Model comparison using fit indices",
+      "Post-profile comparison",
+      "Data visualization",
+    ],
+    overview: [
+      "713 female kindergarten teachers",
+      "Multi-scale survey dataset",
+      "Burnout indicators and psychological resource variables",
+      "Person-centered profile analysis",
+    ],
+    questions: [
+      "Are there distinct burnout profiles among female kindergarten teachers?",
+      "How do these profiles differ across burnout dimensions and related variables?",
+      "How can statistical profiles be translated into meaningful group-level insights?",
+    ],
+    segments: [
+      {
+        title: "High-Organizational Support Group",
+        resource:
+          "High organizational climate resources, but comparatively lower social well-being and trait hope.",
+        interpretation:
+          "These teachers may work in a relatively supportive organizational environment, but their internal psychological and social resources are not equally strong.",
+      },
+      {
+        title: "High-Resource Group",
+        resource:
+          "High levels across organizational climate, social well-being, and trait hope.",
+        interpretation:
+          "These teachers appear resource-rich across both workplace and personal domains. However, the manuscript shows that this group reported the highest levels of burnout across emotional exhaustion, depersonalization, and reduced personal accomplishment.",
+      },
+      {
+        title: "Low-Resource Group",
+        resource:
+          "Lower organizational climate, social well-being, and trait hope.",
+        interpretation:
+          "This group showed limited psychosocial resources across both external and internal domains. Interestingly, the manuscript reports that this group had relatively lower burnout levels than expected.",
+      },
+      {
+        title: "High-Well-Being Group",
+        resource:
+          "Lower organizational climate resources, but higher social well-being and trait hope.",
+        interpretation:
+          "These teachers may rely more on internal and social psychological resources, even when the organizational environment is less supportive.",
+      },
+    ],
+    takeaway:
+      "The four profiles show that psychosocial resources do not translate into burnout outcomes in a simple linear way. A person-centered approach reveals distinct teacher segments with different resource configurations, burnout risks, and support needs.",
+    insights: [
+      {
+        title: "Burnout is heterogeneous.",
+        text: "Teachers with similar overall burnout scores may still show different patterns across emotional exhaustion, depersonalization, and personal accomplishment.",
+      },
+      {
+        title: "Person-centered analysis can reveal hidden needs.",
+        text: "Different burnout profiles may require different types of support rather than one-size-fits-all interventions.",
+      },
+      {
+        title: "Statistical segmentation can support targeted strategy.",
+        text: "By identifying distinct profiles, research findings can be translated into more precise support recommendations for schools, organizations, or service systems.",
+      },
+    ],
+    uxNote:
+      "In UX research, similar segmentation logic can be used to identify different user types, prioritize user needs, and develop persona-informed product or service strategies.",
+  },
+];
+
+const capabilities = [
+  {
+    title: "Research Design",
+    text: "I can translate human experience questions into structured research designs.",
+  },
+  {
+    title: "Longitudinal Thinking",
+    text: "I can analyze how experiences change over time rather than relying only on one-time measurements.",
+  },
+  {
+    title: "Quantitative Research Capability",
+    text: "I can clean, structure, analyze, and visualize complex behavioral datasets.",
+  },
+  {
+    title: "Segmentation Mindset",
+    text: "I can identify meaningful subgroups and translate statistical patterns into human-centered insights.",
+  },
+  {
+    title: "Insight Communication",
+    text: "I can turn complex research findings into clear, actionable narratives for non-specialist audiences.",
+  },
+];
+
+const mappingRows = [
+  {
+    practice: "Diary Study",
+    capability: "Tracking experience over time",
+    application:
+      "Diary studies, onboarding research, retention experience tracking",
+  },
+  {
+    practice: "Daily emotional fluctuation",
+    capability: "Understanding changing user states",
+    application:
+      "Identifying how users' needs, emotions, and pain points evolve across contexts",
+  },
+  {
+    practice: "Within-person analysis",
+    capability: "Context-sensitive behavior analysis",
+    application:
+      "Understanding how the same user behaves differently under different situations",
+  },
+  {
+    practice: "Between-person differences",
+    capability: "Individual difference thinking",
+    application:
+      "User segmentation and identifying different experience patterns",
+  },
+  {
+    practice: "Multilevel modeling",
+    capability: "Analyzing nested behavioral data",
+    application:
+      "Interpreting repeated user data, session-level data, or longitudinal feedback",
+  },
+  {
+    practice: "Latent profile analysis",
+    capability: "Pattern recognition and segmentation",
+    application:
+      "User segmentation, behavioral clustering, persona development",
+  },
+  {
+    practice: "Burnout profiles",
+    capability: "Translating data into human groups",
+    application: "Creating evidence-informed user types or need-based personas",
+  },
+  {
+    practice: "Model comparison",
+    capability: "Evidence-based decision-making",
+    application:
+      "Validating segment structures or prioritizing research interpretations",
+  },
+  {
+    practice: "Post-profile comparison",
+    capability: "Comparing needs across groups",
+    application:
+      "Identifying different pain points, motivations, and support needs across user segments",
+  },
+];
+---
+
+<html lang="zh-CN" data-lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/images/site-logo.png" />
+    <title>UX Portfolio | {name}</title>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="/">
+          <img
+            class="brand-logo"
+            src="/images/site-logo.png"
+            alt={name}
+            width="40"
+            height="40"
+          />
+        </a>
+        <div class="topbar-actions">
+          <nav class="nav">
+            <a href={resumePdf}>Resume</a>
+            <a href={linkedinUrl} rel="noreferrer">LinkedIn</a>
+            <a class="active" href="/ux">UX</a>
+            <a href="/research">Research</a>
+            <a href="/欧阳小司">
+              <span data-lang="zh">欧阳小司的博客</span>
+              <span data-lang="en">Thoughts</span>
+            </a>
+          </nav>
+          <LanguageToggle />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="section-inner">
+          <p class="eyebrow">UX Portfolio</p>
+          <h1>Behavioral Research Portfolio</h1>
+          <p class="lead">
+            This work sample demonstrates my ability to understand human
+            experiences through mixed behavioral research methods and translate
+            complex data into actionable insights.
+          </p>
+          <dl class="overview">
+            <div>
+              <dt>Name</dt>
+              <dd>Zhenghao Lu</dd>
+            </div>
+            <div>
+              <dt>Focus</dt>
+              <dd>Psychology Researcher | Data Analysis</dd>
+            </div>
+            <div>
+              <dt>Featured Cases</dt>
+              <dd>
+                7-day diary study on student well-being; latent profiles of job
+                burnout among female kindergarten teachers.
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <p class="eyebrow">About Me</p>
+          <div class="about-grid">
+            <div>
+              <h2>
+                Psychology-trained researcher with UX-transferable methods
+              </h2>
+            </div>
+            <div class="copy">
+              <p>
+                I am a psychology-trained researcher with experience in
+                longitudinal behavioral research, survey-based studies,
+                statistical modeling, and research communication.
+              </p>
+              <p>
+                My work focuses on understanding human needs, emotional
+                experiences, and behavioral patterns through structured research
+                methods.
+              </p>
+              <p>
+                Although these projects were conducted in academic contexts,
+                they demonstrate transferable UX research skills, including
+                diary study design, behavioral data analysis, user segmentation,
+                insight synthesis, and evidence-based communication.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {
+        cases.map((item) => (
+          <section
+            class="section case-section"
+            id={item.label.toLowerCase().replace(" ", "-")}
+          >
+            <div class="section-inner">
+              <div class="case-heading">
+                <p class="eyebrow">{item.label}</p>
+                <h2>{item.title}</h2>
+                <p>{item.subtitle}</p>
+              </div>
+
+              <div class="case-layout">
+                <aside class="case-meta" aria-label={`${item.label} metadata`}>
+                  <dl>
+                    <div>
+                      <dt>My Role</dt>
+                      <dd>{item.role}</dd>
+                    </div>
+                    <div>
+                      <dt>Research Overview</dt>
+                      <dd>
+                        <ul>
+                          {item.overview.map((entry) => (
+                            <li>{entry}</li>
+                          ))}
+                        </ul>
+                      </dd>
+                    </div>
+                    <div>
+                      <dt>Methods</dt>
+                      <dd>
+                        <ul>
+                          {item.methods.map((entry) => (
+                            <li>{entry}</li>
+                          ))}
+                        </ul>
+                      </dd>
+                    </div>
+                  </dl>
+                </aside>
+
+                <div class="case-body">
+                  <article class="content-block">
+                    <p class="block-label">Project Context</p>
+                    <p>{item.context}</p>
+                  </article>
+
+                  <article class="content-block">
+                    <p class="block-label">Research Questions</p>
+                    <ol class="question-list">
+                      {item.questions.map((question) => (
+                        <li>{question}</li>
+                      ))}
+                    </ol>
+                  </article>
+
+                  {"process" in item && (
+                    <article class="content-block">
+                      <p class="block-label">
+                        Contribution and Analysis Process
+                      </p>
+                      <div class="process-grid">
+                        {item.process.map((step, index) => (
+                          <section>
+                            <span>{String(index + 1).padStart(2, "0")}</span>
+                            <h3>{step.title}</h3>
+                            <p>{step.text}</p>
+                          </section>
+                        ))}
+                      </div>
+                    </article>
+                  )}
+
+                  {"segments" in item && (
+                    <article class="content-block">
+                      <p class="block-label">
+                        From Latent Profiles to Human Segments
+                      </p>
+                      <div class="segment-grid">
+                        {item.segments.map((segment) => (
+                          <section>
+                            <h3>{segment.title}</h3>
+                            <p>{segment.resource}</p>
+                            <strong>Human segment interpretation</strong>
+                            <p>{segment.interpretation}</p>
+                          </section>
+                        ))}
+                      </div>
+                      <p class="takeaway">{item.takeaway}</p>
+                    </article>
+                  )}
+
+                  {"figures" in item && (
+                    <article class="content-block">
+                      <div class="figure-heading">
+                        <div>
+                          <p class="block-label">Selected Figures</p>
+                          <h3>Model and interaction findings</h3>
+                        </div>
+                        <p>
+                          Visual summaries of the study model, three-way
+                          interaction patterns, and gender moderation effects.
+                        </p>
+                      </div>
+                      <div
+                        class="case-figure-gallery drag-scroll-track"
+                        data-drag-scroll
+                        tabindex="0"
+                        aria-label="Case 1 figures"
+                      >
+                        {item.figures.map((figure) => (
+                          <figure class={figure.featured ? "featured" : ""}>
+                            <img
+                              src={figure.src}
+                              alt={figure.alt}
+                              loading="eager"
+                            />
+                            <figcaption>{figure.title}</figcaption>
+                          </figure>
+                        ))}
+                      </div>
+                    </article>
+                  )}
+
+                  <article class="content-block">
+                    <p class="block-label">Key Insights</p>
+                    <div class="insight-list">
+                      {item.insights.map((insight, index) => (
+                        <section>
+                          <span>Insight {index + 1}</span>
+                          <h3>{insight.title}</h3>
+                          <p>{insight.text}</p>
+                        </section>
+                      ))}
+                    </div>
+                    {"uxNote" in item && <p class="ux-note">{item.uxNote}</p>}
+                  </article>
+                </div>
+              </div>
+            </div>
+          </section>
+        ))
+      }
+
+      <section class="section">
+        <div class="section-inner">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">What These Cases Demonstrate</p>
+              <h2>Research capabilities for UX work</h2>
+            </div>
+            <p>
+              Together, these projects show how my psychology research
+              background can support UX research work that requires curiosity,
+              empathy, analytical rigor, and clear communication.
+            </p>
+          </div>
+
+          <div class="capability-grid">
+            {
+              capabilities.map((capability, index) => (
+                <section>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <h3>{capability.title}</h3>
+                  <p>{capability.text}</p>
+                </section>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section class="section final-section">
+        <div class="section-inner">
+          <p class="eyebrow">From Academic Research to UX Research</p>
+          <h2>Transferable research methods and applications</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Academic Research Practice</th>
+                  <th>Core Research Capability</th>
+                  <th>UX Research Application</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  mappingRows.map((row) => (
+                    <tr>
+                      <td>{row.practice}</td>
+                      <td>{row.capability}</td>
+                      <td>{row.application}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="section-inner">
+        <a href={`mailto:${email}`}>{email}</a>
+      </div>
+    </footer>
+
+    <script is:inline>
+      (() => {
+        document.querySelectorAll("[data-drag-scroll]").forEach((track) => {
+          let isDragging = false;
+          let startX = 0;
+          let startScrollLeft = 0;
+
+          const stopDragging = () => {
+            isDragging = false;
+            track.classList.remove("is-dragging");
+          };
+
+          track.addEventListener("pointerdown", (event) => {
+            if (event.pointerType === "mouse" && event.button !== 0) return;
+
+            isDragging = true;
+            startX = event.clientX;
+            startScrollLeft = track.scrollLeft;
+            track.classList.add("is-dragging");
+            track.setPointerCapture?.(event.pointerId);
+          });
+
+          track.addEventListener("pointermove", (event) => {
+            if (!isDragging) return;
+
+            event.preventDefault();
+            track.scrollLeft = startScrollLeft - (event.clientX - startX);
+          });
+
+          track.addEventListener("pointerup", stopDragging);
+          track.addEventListener("pointercancel", stopDragging);
+          track.addEventListener("pointerleave", stopDragging);
+        });
+      })();
+    </script>
+
+    <style>
+      :global(*),
+      :global(*::before),
+      :global(*::after) {
+        box-sizing: border-box;
+      }
+
+      :global(html, body) {
+        min-height: 100%;
+        width: 100%;
+        margin: 0;
+        background: #fff;
+        color: #111;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+      }
+
+      .topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-bottom: 1px solid #eee;
+        z-index: 100;
+      }
+
+      .topbar-inner {
+        width: 100%;
+        padding: 12px clamp(18px, 4vw, 48px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        color: #111;
+        opacity: 1;
+      }
+
+      .brand-logo {
+        display: block;
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+      }
+
+      .nav {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .nav a {
+        text-decoration: none;
+        color: #111;
+        font-size: 14px;
+        opacity: 0.75;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav a:hover,
+      .nav a.active {
+        opacity: 1;
+      }
+
+      .nav a.active {
+        font-weight: 600;
+      }
+
+      .intro {
+        padding: 136px 0 72px;
+        border-bottom: 1px solid #f1f1f1;
+      }
+
+      .section {
+        padding: 72px 0;
+        border-bottom: 1px solid #f1f1f1;
+        scroll-margin-top: 96px;
+      }
+
+      .section-inner {
+        width: 80%;
+        max-width: none;
+        margin: 0 auto;
+      }
+
+      .eyebrow,
+      .block-label {
+        margin: 0 0 12px;
+        color: #777;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        color: #111;
+        font-weight: 600;
+        line-height: 1.25;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        max-width: 900px;
+        font-size: clamp(34px, 5vw, 64px);
+      }
+
+      h2 {
+        font-size: clamp(28px, 4vw, 44px);
+      }
+
+      h3 {
+        font-size: 18px;
+      }
+
+      p,
+      li,
+      dd,
+      td,
+      th {
+        color: #444;
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .lead {
+        max-width: 760px;
+        margin: 24px 0 0;
+        font-size: 17px;
+        line-height: 1.75;
+      }
+
+      .overview {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin: 36px 0 0;
+      }
+
+      .overview div {
+        border-top: 1px solid #ddd;
+        padding-top: 14px;
+      }
+
+      .overview dt,
+      .case-meta dt {
+        margin: 0 0 8px;
+        color: #777;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .overview dd,
+      .case-meta dd {
+        margin: 0;
+      }
+
+      .about-grid,
+      .case-layout {
+        display: grid;
+        grid-template-columns: minmax(220px, 0.75fr) minmax(0, 1.25fr);
+        gap: 48px;
+        align-items: start;
+      }
+
+      .copy p {
+        margin: 0 0 16px;
+      }
+
+      .copy p:last-child {
+        margin-bottom: 0;
+      }
+
+      .case-section {
+        padding-top: 88px;
+      }
+
+      .case-heading {
+        max-width: 980px;
+        margin-bottom: 42px;
+      }
+
+      .case-heading > p:last-child {
+        max-width: 780px;
+        margin: 18px 0 0;
+        color: #555;
+        font-size: 17px;
+        line-height: 1.7;
+      }
+
+      .case-meta {
+        position: sticky;
+        top: 96px;
+      }
+
+      .case-meta dl {
+        display: grid;
+        gap: 28px;
+        margin: 0;
+      }
+
+      .case-meta ul {
+        display: grid;
+        gap: 6px;
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .case-body {
+        display: grid;
+        gap: 34px;
+      }
+
+      .content-block {
+        padding-top: 28px;
+        border-top: 1px solid #e8e8e8;
+      }
+
+      .content-block > p:last-child {
+        margin-bottom: 0;
+      }
+
+      .question-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .process-grid,
+      .segment-grid,
+      .insight-list,
+      .capability-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .figure-heading {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 18px;
+      }
+
+      .figure-heading p:last-child {
+        max-width: 360px;
+        margin: 0;
+        color: #555;
+        font-size: 14px;
+        line-height: 1.6;
+        text-align: right;
+      }
+
+      .case-figure-gallery {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        padding: 0 0 12px;
+        cursor: grab;
+        scroll-snap-type: x proximity;
+        scrollbar-color: #bbb transparent;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .case-figure-gallery:focus-visible {
+        outline: 2px solid #111;
+        outline-offset: 4px;
+      }
+
+      .case-figure-gallery.is-dragging {
+        cursor: grabbing;
+        user-select: none;
+      }
+
+      .case-figure-gallery figure {
+        flex: 0 0 min(100%, 720px);
+        margin: 0;
+        border: 1px solid #e6e6e6;
+        background: #fff;
+        scroll-snap-align: start;
+      }
+
+      .case-figure-gallery.is-dragging img {
+        pointer-events: none;
+      }
+
+      .case-figure-gallery img {
+        display: block;
+        width: 100%;
+        height: auto;
+        background: #fff;
+      }
+
+      .case-figure-gallery figcaption {
+        min-height: 48px;
+        padding: 12px 14px;
+        border-top: 1px solid #eee;
+        color: #555;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .process-grid,
+      .capability-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .segment-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .process-grid section,
+      .segment-grid section,
+      .insight-list section,
+      .capability-grid section {
+        border: 1px solid #e6e6e6;
+        padding: 18px;
+        background: #fff;
+      }
+
+      .process-grid span,
+      .insight-list span,
+      .capability-grid span {
+        display: block;
+        margin-bottom: 12px;
+        color: #777;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .process-grid p,
+      .segment-grid p,
+      .insight-list p,
+      .capability-grid p {
+        margin: 10px 0 0;
+      }
+
+      .segment-grid strong {
+        display: block;
+        margin-top: 16px;
+        color: #111;
+        font-size: 13px;
+      }
+
+      .takeaway,
+      .ux-note {
+        margin: 20px 0 0;
+        padding-left: 18px;
+        border-left: 2px solid #111;
+        color: #333;
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 32px;
+      }
+
+      .section-heading p:last-child {
+        max-width: 460px;
+        margin: 0;
+        color: #555;
+        font-size: 14px;
+        line-height: 1.7;
+        text-align: right;
+      }
+
+      .table-wrap {
+        margin-top: 28px;
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        min-width: 760px;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 16px 14px;
+        border-bottom: 1px solid #e7e7e7;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: #111;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      td:first-child {
+        color: #111;
+        font-weight: 600;
+      }
+
+      .final-section {
+        padding-bottom: 96px;
+      }
+
+      .footer {
+        padding: 28px 0 48px;
+        border-top: 1px solid #f1f1f1;
+      }
+
+      .footer a {
+        color: #555;
+        font-size: 14px;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      @media (max-width: 860px) {
+        .about-grid,
+        .case-layout {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+
+        .case-meta {
+          position: static;
+        }
+
+        .overview,
+        .process-grid,
+        .segment-grid,
+        .case-figure-gallery,
+        .capability-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .topbar-inner {
+          align-items: flex-start;
+          gap: 12px;
+          padding: 12px 18px;
+        }
+
+        .nav {
+          justify-content: flex-end;
+          flex-wrap: wrap;
+          gap: 10px 14px;
+        }
+
+        .nav a {
+          font-size: 13px;
+        }
+
+        .intro {
+          padding: 128px 0 56px;
+        }
+
+        .section {
+          padding: 56px 0;
+        }
+
+        .section-inner {
+          width: min(88%, 100% - 32px);
+        }
+
+        h1 {
+          font-size: 32px;
+        }
+
+        h2 {
+          font-size: 28px;
+        }
+
+        .section-heading {
+          display: grid;
+          gap: 14px;
+        }
+
+        .section-heading p:last-child {
+          text-align: left;
+        }
+
+        .figure-heading {
+          display: grid;
+          gap: 12px;
+        }
+
+        .figure-heading p:last-child {
+          text-align: left;
+        }
+      }
+    </style>
+  </body>
+</html>

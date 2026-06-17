@@ -10,8 +10,7 @@ const researchItems = [
   {
     title: "Daily Hope, Exam Stress, and Adolescent Well-Being",
     titleZh: "每日希望、考试压力与青少年幸福感",
-    status: "Under review",
-    statusZh: "审稿中",
+    status: "In Progress",
     methods: "Daily diary study, multilevel modeling, longitudinal analysis",
     methodsZh: "日记研究、多层模型、纵向分析",
     summary:
@@ -21,12 +20,49 @@ const researchItems = [
     keywords:
       "Adolescent well-being, hope, exam stress, daily diary, need satisfaction",
     keywordsZh: "青少年幸福感、希望、考试压力、日记研究、需求满足",
+    images: [
+      {
+        src: "/images/research/daily-hope/model-overview.png",
+        alt: "Conceptual model for the daily hope, exam stress, and well-being study",
+        caption: "Conceptual model",
+        captionZh: "研究模型图",
+      },
+      {
+        src: "/images/research/daily-hope/daily-trends.png",
+        alt: "Daily mean trends of key variables across 7 days",
+        caption: "Daily trends across exam week",
+        captionZh: "考试周关键变量的日均趋势",
+      },
+      {
+        src: "/images/research/daily-hope/gender-positive-affect.png",
+        alt: "Gender moderation of the effect of hope on positive affect",
+        caption: "Gender moderation: positive affect",
+        captionZh: "性别调节：积极情绪",
+      },
+      {
+        src: "/images/research/daily-hope/gender-negative-affect.png",
+        alt: "Gender moderation of the effect of hope on negative affect",
+        caption: "Gender moderation: negative affect",
+        captionZh: "性别调节：消极情绪",
+      },
+      {
+        src: "/images/research/daily-hope/three-way-positive-affect.png",
+        alt: "Three-way interaction among hope, stress, and need satisfaction predicting positive affect",
+        caption: "Hope x stress x need satisfaction: positive affect",
+        captionZh: "希望 x 压力 x 需求满足：积极情绪",
+      },
+      {
+        src: "/images/research/daily-hope/three-way-negative-affect.png",
+        alt: "Three-way interaction among hope, stress, and need satisfaction predicting negative affect",
+        caption: "Hope x stress x need satisfaction: negative affect",
+        captionZh: "希望 x 压力 x 需求满足：消极情绪",
+      },
+    ],
   },
   {
     title: "Parenting, Social Anxiety, Internet Use, and Adolescent Well-Being",
     titleZh: "父母教养方式、社交焦虑、网络使用与青少年幸福感",
-    status: "Under review",
-    statusZh: "审稿中",
+    status: "In Progress",
     methods:
       "Survey research, structural equation modeling, mediation analysis",
     methodsZh: "问卷研究、结构方程模型、中介分析",
@@ -37,12 +73,19 @@ const researchItems = [
     keywords:
       "Parenting styles, psychological well-being, social anxiety, Internet addiction, adolescents",
     keywordsZh: "教养方式、心理幸福感、社交焦虑、网络成瘾、青少年",
+    images: [
+      {
+        src: "/images/research/parenting/model-pathways.png",
+        alt: "Hypothesized model linking parenting styles, social anxiety, Internet addiction, and psychological well-being",
+        caption: "Hypothesized pathway model",
+        captionZh: "假设路径模型",
+      },
+    ],
   },
   {
     title: "Psychosocial Resources and Burnout Among Female Preschool Teachers",
     titleZh: "女性幼儿教师的心理社会资源与职业倦怠",
-    status: "Under review",
-    statusZh: "审稿中",
+    status: "In Progress",
     methods: "Latent profile analysis, segmentation, outcome comparison",
     methodsZh: "潜在剖面分析、群体分层、结果比较",
     summary:
@@ -52,6 +95,14 @@ const researchItems = [
     keywords:
       "Teacher burnout, organizational climate, hope, social well-being, latent profile analysis",
     keywordsZh: "教师倦怠、组织氛围、希望感、社会幸福感、潜在剖面分析",
+    images: [
+      {
+        src: "/images/research/burnout/resource-profiles.png",
+        alt: "Latent profile patterns of psychosocial resources among female preschool teachers",
+        caption: "Psychosocial resource profiles",
+        captionZh: "心理社会资源剖面",
+      },
+    ],
   },
 ];
 ---
@@ -80,6 +131,7 @@ const researchItems = [
           <nav class="nav">
             <a href={resumePdf}>Resume</a>
             <a href={linkedinUrl} rel="noreferrer">LinkedIn</a>
+            <a href="/ux">UX</a>
             <a href="/research">Research</a>
             <a href="/欧阳小司">
               <span data-lang="zh">欧阳小司的博客</span>
@@ -119,11 +171,33 @@ const researchItems = [
         <div class="section-inner research-list">
           {
             researchItems.map((item) => (
-              <article class="research-item">
-                <div class="image-slot" aria-label={`${item.title} image area`}>
-                  <span data-lang="zh">图片区域</span>
-                  <span data-lang="en">Image area</span>
-                </div>
+              <article
+                class={`research-item ${item.images ? "research-item-gallery" : ""}`}
+              >
+                {item.images ? (
+                  <div
+                    class="research-gallery"
+                    aria-label={`${item.title} figures`}
+                  >
+                    {item.images.map((image) => (
+                      <figure>
+                        <img src={image.src} alt={image.alt} loading="lazy" />
+                        <figcaption>
+                          <span data-lang="zh">{image.captionZh}</span>
+                          <span data-lang="en">{image.caption}</span>
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                ) : (
+                  <div
+                    class="image-slot"
+                    aria-label={`${item.title} image area`}
+                  >
+                    <span data-lang="zh">图片区域</span>
+                    <span data-lang="en">Image area</span>
+                  </div>
+                )}
                 <div class="research-copy">
                   <p class="status">
                     <span data-lang="zh">{item.statusZh}</span>
@@ -315,6 +389,11 @@ const researchItems = [
         border-bottom: 0;
       }
 
+      .research-item-gallery {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
       .image-slot {
         aspect-ratio: 4 / 3;
         width: 100%;
@@ -330,6 +409,40 @@ const researchItems = [
           linear-gradient(45deg, #fafafa 25%, #fff 25%) 0 0 / 24px 24px;
         color: #888;
         font-size: 13px;
+      }
+
+      .research-gallery {
+        order: 2;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .research-gallery figure {
+        margin: 0;
+        border: 1px solid #e8e8e8;
+        background: #fff;
+      }
+
+      .research-gallery img {
+        display: block;
+        width: 100%;
+        height: clamp(120px, 15vw, 168px);
+        padding: 8px;
+        object-fit: contain;
+      }
+
+      .research-gallery figcaption {
+        min-height: 42px;
+        padding: 8px 10px 10px;
+        border-top: 1px solid #eee;
+        color: #666;
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .research-item-gallery .research-copy {
+        order: 1;
       }
 
       .research-copy {
@@ -424,9 +537,31 @@ const researchItems = [
           gap: 20px;
         }
 
+        .research-gallery {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 10px;
+        }
+
+        .research-gallery img {
+          height: 112px;
+          padding: 6px;
+        }
+
+        .research-gallery figcaption {
+          min-height: 38px;
+          padding: 7px 8px 8px;
+          font-size: 11px;
+        }
+
         .meta div {
           grid-template-columns: 1fr;
           gap: 2px;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .research-gallery {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
     </style>
