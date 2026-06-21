@@ -1,5 +1,6 @@
 ---
 import LanguageToggle from "../components/LanguageToggle.astro";
+import PageTransition from "../components/PageTransition.astro";
 
 const name = "Zhenghao Lu";
 const email = "zhenghao_lu@outlook.com";
@@ -30,11 +31,16 @@ const latestPosts = posts
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="/images/site-logo.png" />
     <title>{name}</title>
+    <PageTransition />
   </head>
 
   <body>
     {/* 顶部导航栏 */}
-    <header class="topbar">
+    <header
+      class="topbar"
+      transition:name="site-header"
+      transition:animate="none"
+    >
       <div class="topbar-inner">
         <a class="brand" href="/">
           <img

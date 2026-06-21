@@ -41,16 +41,19 @@
     const initialLanguage = getStoredLanguage() || "zh";
     applyLanguage(initialLanguage);
 
-    document.addEventListener("DOMContentLoaded", () => {
-      applyLanguage(getStoredLanguage() || initialLanguage);
+    document.addEventListener("click", (event) => {
+      if (!(event.target instanceof Element)) return;
 
-      document.querySelectorAll("[data-lang-option]").forEach((button) => {
-        button.addEventListener("click", () => {
-          const nextLanguage = button.dataset.langOption || "zh";
-          storeLanguage(nextLanguage);
-          applyLanguage(nextLanguage);
-        });
-      });
+      const button = event.target.closest("[data-lang-option]");
+      if (!(button instanceof HTMLElement)) return;
+
+      const nextLanguage = button.dataset.langOption || "zh";
+      storeLanguage(nextLanguage);
+      applyLanguage(nextLanguage);
+    });
+
+    document.addEventListener("astro:after-swap", () => {
+      applyLanguage(getStoredLanguage() || initialLanguage);
     });
   })();
 </script>

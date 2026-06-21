@@ -1,5 +1,6 @@
 ---
 import LanguageToggle from "../components/LanguageToggle.astro";
+import PageTransition from "../components/PageTransition.astro";
 ---
 
 <html lang="zh-CN" data-lang="zh">
@@ -8,11 +9,16 @@ import LanguageToggle from "../components/LanguageToggle.astro";
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="/images/site-logo.png" />
     <title>Blog | Zhenghao Lu</title>
+    <PageTransition />
   </head>
 
   <body>
     {/* 顶部导航栏 */}
-    <header class="topbar">
+    <header
+      class="topbar"
+      transition:name="site-header"
+      transition:animate="none"
+    >
       <div class="topbar-inner">
         <a class="brand" href="/">
           <img

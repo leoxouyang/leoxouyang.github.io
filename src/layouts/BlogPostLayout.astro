@@ -1,5 +1,6 @@
 ---
 import LanguageToggle from "../components/LanguageToggle.astro";
+import PageTransition from "../components/PageTransition.astro";
 
 const { frontmatter } = Astro.props;
 ---
@@ -10,11 +11,16 @@ const { frontmatter } = Astro.props;
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/png" href="/images/site-logo.png" />
         <title>{frontmatter.title} | 欧阳小司的博客</title>
+        <PageTransition />
     </head>
 
     <body>
         {/* 顶部导航栏 */}
-        <header class="topbar">
+        <header
+            class="topbar"
+            transition:name="site-header"
+            transition:animate="none"
+        >
             <div class="topbar-inner">
                 <a class="brand" href="/">
                     <img
