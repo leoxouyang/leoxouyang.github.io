@@ -1,0 +1,1493 @@
+---
+import PageTransition from "../components/PageTransition.astro";
+
+const name = "Zhenghao Lu";
+const email = "zhenghao_lu@outlook.com";
+const phone = "+86 155 8086 3265";
+const websiteUrl = "https://leoxouyang.github.io";
+const linkedinUrl = "https://www.linkedin.com/in/zhenghao-lu-a6a396372/";
+
+const experience = [
+  {
+    role: {
+      zh: "编辑与数据分析",
+      en: "Editor & Data Analysis",
+    },
+    organization: {
+      zh: "长沙茗创科技有限公司",
+      en: "Changsha Mingchuang Technology Company",
+    },
+    location: {
+      zh: "湖南，长沙",
+      en: "Changsha, Hunan",
+    },
+    period: {
+      zh: "2025年9月—2026年3月",
+      en: "Sep 2025 – Mar 2026",
+    },
+    bullets: [
+      {
+        label: { zh: "受众与市场洞察", en: "Audience & Market Insight" },
+        text: {
+          zh: "研究心理学与神经科学领域的新兴议题和受众需求，识别信息缺口、理解障碍与内容机会，为选题和定位提供依据。",
+          en: "Researched emerging topics and audience needs in psychology and neuroscience, identifying information gaps, comprehension barriers, and content opportunities to inform topic selection and positioning.",
+        },
+      },
+      {
+        label: { zh: "行为数据分析", en: "Behavioral Data Analysis" },
+        text: {
+          zh: "分析浏览量、完读率、分享和收藏等互动指标，识别受众兴趣和行为模式，并据此优化内容结构、标题与选题策略。",
+          en: "Analyzed engagement metrics including page views, completion rates, shares, and saves to identify audience interests and behavioral patterns; used findings to optimize content structure, headlines, and topic strategy.",
+        },
+      },
+      {
+        label: {
+          zh: "洞察与建议形成",
+          en: "Insight & Recommendation Development",
+        },
+        text: {
+          zh: "整合研究证据、行为数据与受众观察，形成清晰洞察和可执行建议，支持内容定位与传播策略。",
+          en: "Synthesized research evidence, behavioral data, and audience observations into clear insights and practical recommendations for content positioning and communication strategy.",
+        },
+      },
+      {
+        label: {
+          zh: "复杂信息整合",
+          en: "Complex Information Synthesis",
+        },
+        text: {
+          zh: "提炼学术与技术研究中的关键发现、影响、局限和趋势，将复杂内容转化为易于理解且有助决策的叙事。",
+          en: "Translated academic and technical research into accessible, decision-relevant narratives by identifying key findings, implications, limitations, and emerging trends.",
+        },
+      },
+      {
+        label: { zh: "工作流程建设", en: "Workflow Development" },
+        text: {
+          zh: "建立可复用的研究模板、编辑规范与标准操作流程，提升项目的一致性、效率和协作质量。",
+          en: "Developed reusable research templates, editorial guidelines, and SOPs to improve consistency, efficiency, and collaboration across projects.",
+        },
+      },
+      {
+        label: { zh: "数据质量与自动化", en: "Data Quality & Automation" },
+        text: {
+          zh: "支持脑电数据的端到端处理、质量控制、标准化输出和批处理脚本开发，提升研究流程的可靠性与可扩展性。",
+          en: "Supported end-to-end EEG data processing, quality control, standardized outputs, and batch-processing scripts, improving the reliability and scalability of research workflows.",
+        },
+      },
+    ],
+  },
+  {
+    role: {
+      zh: "兼职讲师与心理咨询师（实习）",
+      en: "Part-time Lecturer & Psychological Counselor (Internship)",
+    },
+    organization: {
+      zh: "湖南涉外经济学院",
+      en: "Hunan International Economics University",
+    },
+    location: {
+      zh: "湖南，长沙",
+      en: "Changsha, Hunan",
+    },
+    period: {
+      zh: "2023年9月—2024年1月",
+      en: "Sep 2023 – Jan 2024",
+    },
+    bullets: [
+      {
+        label: { zh: "沟通与表达", en: "Communication & Presentation" },
+        text: {
+          zh: "讲授本科心理学课程，面向不同知识基础的学生，将复杂行为科学概念转化为清晰、有吸引力的内容。",
+          en: "Delivered undergraduate psychology courses and translated complex behavioral concepts into clear, engaging narratives tailored to audiences with different levels of knowledge.",
+        },
+      },
+      {
+        label: { zh: "需求评估", en: "Needs Assessment" },
+        text: {
+          zh: "开展一对一心理咨询，通过结构化提问、积极倾听和循证评估识别来访者的深层需求与挑战。",
+          en: "Conducted one-on-one counseling sessions to identify underlying needs and challenges through structured questioning, active listening, and evidence-based assessment.",
+        },
+      },
+      {
+        label: { zh: "引导与参与", en: "Facilitation & Engagement" },
+        text: {
+          zh: "设计课堂活动并引导讨论，根据参与者反应和反馈调整沟通方式。",
+          en: "Designed classroom activities and facilitated discussions, adapting communication approaches based on participant responses and feedback.",
+        },
+      },
+      {
+        label: { zh: "持续改进", en: "Continuous Improvement" },
+        text: {
+          zh: "评估学生反馈与学习结果，持续改进课程内容、沟通方法和参与策略。",
+          en: "Evaluated student feedback and learning outcomes to refine course content, communication methods, and engagement strategies.",
+        },
+      },
+    ],
+  },
+];
+
+const research = [
+  {
+    title: {
+      zh: "主观社会地位与攻击行为",
+      en: "Subjective Social Status and Aggression",
+    },
+    role: { zh: "硕士论文", en: "Master's Thesis" },
+    period: {
+      zh: "2023年2月—2025年6月",
+      en: "Feb 2023 – Jun 2025",
+    },
+    summary: {
+      zh: "独立完成由一项大规模问卷和两项行为实验组成的多研究项目，考察主观社会地位如何影响行为。",
+      en: "Designed and independently executed a multi-study project combining a large-scale survey and two behavioral experiments to investigate how perceived social status influences behavior.",
+    },
+    methods: [
+      { zh: "行为实验", en: "Behavioral experiments" },
+      { zh: "问卷研究", en: "Survey research" },
+      { zh: "中介与调节分析", en: "Mediation & moderation" },
+    ],
+    details: [
+      {
+        zh: "提出研究问题和假设，设计问卷与实验，协调参与者招募，并管理从数据收集到分析的全过程。",
+        en: "Developed research questions and hypotheses, designed survey and experimental approaches, coordinated participant recruitment, and managed research execution from data collection through analysis.",
+      },
+      {
+        zh: "分析行为和问卷数据，识别关键心理机制，并通过回归、中介和调节分析检验替代解释。",
+        en: "Analyzed behavioral and survey data to identify key psychological mechanisms and tested alternative explanations through regression, mediation, and moderation analyses.",
+      },
+      {
+        zh: "整合多项研究结果形成循证结论，说明主观地位和相对剥夺感如何影响行为结果。",
+        en: "Synthesized findings across studies into evidence-based conclusions, demonstrating how perceived status and relative deprivation shape behavioral outcomes.",
+      },
+    ],
+  },
+  {
+    title: {
+      zh: "高中生主观幸福感、希望与学业压力",
+      en: "Subjective Well-being, Hope, and Academic Stress in High School Students",
+    },
+    role: { zh: "共同主要研究者", en: "Co-Principal Investigator" },
+    period: {
+      zh: "2024年5月—2025年10月",
+      en: "May 2024 – Oct 2025",
+    },
+    portfolioHref: "/portfolio#case-1",
+    summary: {
+      zh: "分析七天纵向行为数据，理解压力、希望和心理需要的变化如何影响学生每日的情绪体验。",
+      en: "Analyzed seven-day longitudinal behavioral data to understand how changes in stress, hope, and psychological needs influenced students' daily emotional experiences.",
+    },
+    methods: [
+      { zh: "七日日记研究", en: "7-day diary study" },
+      { zh: "多层线性模型", en: "Multilevel modeling" },
+      { zh: "R", en: "R" },
+    ],
+    details: [
+      {
+        zh: "使用 R 进行多层建模，区分个体内的行为变化和个体间差异，并识别后续结果的关键预测因素。",
+        en: "Applied multilevel modeling in R to distinguish within-person behavioral changes from between-person differences and identify key predictors of subsequent outcomes.",
+      },
+      {
+        zh: "将复杂的纵向研究结果整合为清晰洞察，并参与可视化、报告和论文开发。",
+        en: "Synthesized complex longitudinal findings into clear research insights and contributed to visualization, reporting, and manuscript development.",
+      },
+    ],
+  },
+  {
+    title: {
+      zh: "教养方式与心理幸福感的关系",
+      en: "The Relationship Between Parenting Styles and Psychological Well-being",
+    },
+    role: { zh: "共同主要研究者", en: "Co-Principal Investigator" },
+    period: {
+      zh: "2024年9月—2025年6月",
+      en: "Sep 2024 – Jun 2025",
+    },
+    portfolioHref: "/portfolio#case-3",
+    summary: {
+      zh: "参与大规模问卷研究，考察教养方式如何通过社交焦虑和网络使用行为影响心理幸福感。",
+      en: "Contributed to a large-scale survey study examining how parenting styles relate to psychological well-being through social anxiety and Internet-use behaviors.",
+    },
+    methods: [
+      { zh: "问卷设计", en: "Survey design" },
+      { zh: "结构方程模型", en: "Structural modeling" },
+      { zh: "SPSS / Mplus", en: "SPSS / Mplus" },
+    ],
+    details: [
+      {
+        zh: "参与问卷开发、数据质量控制，以及使用 SPSS 和 Mplus 进行定量分析。",
+        en: "Supported questionnaire development, data quality control, and quantitative analysis using SPSS and Mplus.",
+      },
+      {
+        zh: "通过结构模型比较不同作用路径，识别与幸福感关系最密切的行为机制。",
+        en: "Used structural modeling to evaluate competing pathways and identify the behavioral mechanisms most strongly associated with well-being.",
+      },
+      {
+        zh: "参与研究结果解读，以及研究报告和论文材料的撰写。",
+        en: "Contributed to interpretation of findings and development of research reports and manuscript materials.",
+      },
+    ],
+  },
+  {
+    title: {
+      zh: "女性幼儿园教师职业倦怠的潜在剖面",
+      en: "Latent Profiles of Job Burnout among Female Kindergarten Teachers",
+    },
+    role: { zh: "共同主要研究者", en: "Co-Principal Investigator" },
+    period: {
+      zh: "2024年1月—2025年12月",
+      en: "Jan 2024 – Dec 2025",
+    },
+    portfolioHref: "/portfolio#case-2",
+    summary: {
+      zh: "使用潜在剖面分析识别幼儿园教师中不同的行为与心理特征群体。",
+      en: "Analyzed survey data to identify distinct behavioral and psychological profiles among kindergarten teachers using latent profile analysis in R.",
+    },
+    methods: [
+      { zh: "潜在剖面分析", en: "Latent profile analysis" },
+      { zh: "行为细分", en: "Behavioral segmentation" },
+      { zh: "R", en: "R" },
+    ],
+    details: [
+      {
+        zh: "比较不同分析模型，将统计模式转化为基于组织氛围、幸福感、希望和倦怠的可解释群体。",
+        en: "Compared alternative analytical models and translated statistical patterns into interpretable audience segments based on organizational climate, well-being, hope, and burnout.",
+      },
+      {
+        zh: "开展群体比较并制作可视化，清晰呈现不同剖面之间的关键差异与实际意义。",
+        en: "Conducted segment comparisons and developed visualizations to communicate key differences and implications across profiles.",
+      },
+    ],
+  },
+];
+
+const education = [
+  {
+    school: {
+      zh: "湖南师范大学",
+      en: "Hunan Normal University",
+    },
+    degree: {
+      zh: "教育学硕士，心理学",
+      en: "Master of Education, Psychology",
+    },
+    period: {
+      zh: "2022年9月—2025年6月",
+      en: "Sep 2022 – Jun 2025",
+    },
+    location: {
+      zh: "湖南，长沙",
+      en: "Changsha, Hunan",
+    },
+    coursework: {
+      zh: "高级心理统计、实验设计与数据分析、心理学研究方法、人格与社会心理学",
+      en: "Advanced Psychological Statistics, Experimental Design and Data Analysis, Psychological Research Methodology, Personality and Social Psychology",
+    },
+  },
+  {
+    school: {
+      zh: "湖南文理学院",
+      en: "Hunan University of Arts and Science",
+    },
+    degree: {
+      zh: "理学学士，化学",
+      en: "Bachelor of Science, Chemistry",
+    },
+    period: {
+      zh: "2018年9月—2022年6月",
+      en: "Sep 2018 – Jun 2022",
+    },
+    location: {
+      zh: "湖南，常德",
+      en: "Changde, Hunan",
+    },
+    coursework: {
+      zh: "无机化学、有机化学、物理化学、结构化学",
+      en: "Inorganic Chemistry, Organic Chemistry, Physical Chemistry, Structural Chemistry",
+    },
+  },
+];
+
+const skillGroups = [
+  {
+    title: { zh: "研究与洞察", en: "Research & Insights" },
+    items: {
+      zh: "一手与二手研究、问卷设计、行为实验、受众研究、假设发展、洞察整合",
+      en: "Primary and secondary research, survey design, behavioral experiments, audience research, hypothesis development, insight synthesis",
+    },
+  },
+  {
+    title: { zh: "策略与问题解决", en: "Strategy & Problem Solving" },
+    items: {
+      zh: "结构化问题解决、循证建议、行为细分、信息整合、演示表达",
+      en: "Structured problem solving, evidence-based recommendations, behavioral segmentation, information synthesis, presentation",
+    },
+  },
+  {
+    title: { zh: "数据与分析", en: "Data & Analytics" },
+    items: {
+      zh: "定量与定性分析、统计建模、数据清理与质量控制、数据可视化",
+      en: "Quantitative and qualitative analysis, statistical modeling, data cleaning and quality control, data visualization",
+    },
+  },
+  {
+    title: { zh: "工具", en: "Technical Tools" },
+    items: {
+      zh: "Microsoft Office、R、SPSS、Mplus、MATLAB、PsychoPy、Figma、Codex",
+      en: "Microsoft Office, R, SPSS, Mplus, MATLAB, PsychoPy, Figma, Codex",
+    },
+  },
+  {
+    title: { zh: "AI 与数字能力", en: "AI & Digital" },
+    items: {
+      zh: "AI 辅助研究、信息整合、数据分析、工作流自动化、快速原型",
+      en: "AI-assisted research, information synthesis, data analysis, workflow automation, rapid prototyping",
+    },
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Zhenghao Lu — psychology researcher working across behavioral research, data analysis, and insight development."
+    />
+    <link rel="icon" type="image/png" href="/images/site-logo.png" />
+    <title>CV | {name}</title>
+    <PageTransition />
+  </head>
+
+  <body>
+    <header
+      class="topbar"
+      transition:name="site-header"
+      transition:animate="none"
+    >
+      <div class="topbar-inner">
+        <a class="brand" href="/" aria-label="Back to homepage">
+          <img
+            class="brand-logo"
+            src="/images/site-logo.png"
+            alt={name}
+            width="40"
+            height="40"
+          />
+        </a>
+        <div class="topbar-actions">
+          <nav class="nav" aria-label="Primary navigation">
+            <a class="active" href="/cv">
+              CV
+            </a>
+            <a href="/portfolio">Portfolio</a>
+            <a class="linkedin-link" href={linkedinUrl} rel="noreferrer"
+              >LinkedIn</a
+            >
+            <button class="print-link" type="button" onclick="window.print()">
+              Print
+            </button>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-inner">
+          <p class="eyebrow">
+            <span data-lang="zh">研究 · 数据 · 洞察</span>
+            <span data-lang="en">Research · Data · Insight</span>
+          </p>
+          <div class="hero-grid">
+            <div>
+              <h1>{name}</h1>
+              <p class="positioning" data-lang="zh">
+                以心理学为基础，理解人的行为，并将复杂证据转化为清晰、可执行的洞察。
+              </p>
+              <p class="positioning" data-lang="en">
+                Understanding why people behave the way they do, using research and data to identify patterns, and translating those insights into strategic recommendations.
+              </p>
+            </div>
+            <address class="contact-list">
+              <a href={`mailto:${email}`}>{email}</a>
+              <a href={`tel:${phone.replaceAll(" ", "")}`}>{phone}</a>
+              <a href={websiteUrl} rel="noreferrer">leoxouyang.github.io</a>
+            </address>
+          </div>
+
+          <dl class="profile-meta">
+            <div>
+              <dt data-lang="zh">方向</dt>
+              <dt data-lang="en">Focus</dt>
+              <dd data-lang="zh">行为研究与洞察</dd>
+              <dd data-lang="en">Behavioral Research & Insights</dd>
+            </div>
+            <div>
+              <dt data-lang="zh">方法</dt>
+              <dt data-lang="en">Methods</dt>
+              <dd data-lang="zh">问卷、实验与统计建模</dd>
+              <dd data-lang="en">Surveys, Experiments & Statistical Modeling</dd>
+            </div>
+            <div>
+              <dt data-lang="zh">语言</dt>
+              <dt data-lang="en">Languages</dt>
+              <dd data-lang="zh">普通话 · 英语（IELTS 7.0）</dd>
+              <dd data-lang="en">Mandarin · English (IELTS 7.0)</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <div class="resume-layout">
+        <aside class="resume-aside">
+          <section>
+            <p class="eyebrow">
+              <span data-lang="zh">简介</span>
+              <span data-lang="en">Profile</span>
+            </p>
+            <p data-lang="zh">
+              心理学硕士，有行为研究、数据分析与洞察开发经验。擅长构建研究问题、提出并检验假设、分析定量与定性证据，以及将复杂发现转化为清晰、可执行的建议。
+            </p>
+            <p data-lang="en">
+              Psychology Master's graduate with experience in behavioral
+              research, data analysis, and insight development. Skilled in
+              structuring research questions, testing hypotheses, analyzing
+              quantitative and qualitative evidence, and translating complex
+              findings into actionable recommendations.
+            </p>
+            <p data-lang="zh">
+              通过一手研究、实验、问卷和互动数据理解用户需求与行为模式，并具有横跨行为科学、内容策略、数据流程和
+              AI 辅助研究的多学科实践经验。
+            </p>
+            <p data-lang="en">
+              Experienced in understanding user needs and behavioral patterns
+              through primary research, experiments, surveys, and engagement
+              data, with a multidisciplinary background spanning behavioral
+              science, content strategy, data workflows, and AI-assisted
+              research.
+            </p>
+          </section>
+
+          <section>
+            <p class="eyebrow">
+              <span data-lang="zh">语言</span>
+              <span data-lang="en">Languages</span>
+            </p>
+            <dl class="simple-list">
+              <div>
+                <dt data-lang="zh">普通话</dt>
+                <dt data-lang="en">Mandarin</dt>
+                <dd data-lang="zh">母语</dd>
+                <dd data-lang="en">Native</dd>
+              </div>
+              <div>
+                <dt data-lang="zh">英语</dt>
+                <dt data-lang="en">English</dt>
+                <dd data-lang="zh">流利 · IELTS 7.0</dd>
+                <dd data-lang="en">Fluent · IELTS 7.0</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section>
+            <p class="eyebrow">
+              <span data-lang="zh">能力</span>
+              <span data-lang="en">Capabilities</span>
+            </p>
+            <div class="skill-groups">
+              {
+                skillGroups.map((group) => (
+                  <div>
+                    <h3 data-lang="zh">{group.title.zh}</h3>
+                    <h3 data-lang="en">{group.title.en}</h3>
+                    <p data-lang="zh">{group.items.zh}</p>
+                    <p data-lang="en">{group.items.en}</p>
+                  </div>
+                ))
+              }
+            </div>
+          </section>
+        </aside>
+
+        <div class="resume-main">
+          <section class="resume-section">
+            <div class="section-heading">
+              <p class="section-number">01</p>
+              <div>
+                <p class="eyebrow">
+                  <span data-lang="zh">工作经历</span>
+                  <span data-lang="en">Experience</span>
+                </p>
+                <h2 data-lang="zh">把行为证据转化为可理解的内容与建议</h2>
+                <h2 data-lang="en">
+                  Turning behavioral evidence into understandable content and
+                  recommendations
+                </h2>
+              </div>
+            </div>
+
+            <div class="timeline">
+              {
+                experience.map((item) => (
+                  <article class="timeline-item">
+                    <div class="timeline-meta">
+                      <time data-lang="zh">{item.period.zh}</time>
+                      <time data-lang="en">{item.period.en}</time>
+                      <span data-lang="zh">{item.location.zh}</span>
+                      <span data-lang="en">{item.location.en}</span>
+                    </div>
+                    <div class="timeline-content">
+                      <h3 data-lang="zh">{item.role.zh}</h3>
+                      <h3 data-lang="en">{item.role.en}</h3>
+                      <p class="organization" data-lang="zh">
+                        {item.organization.zh}
+                      </p>
+                      <p class="organization" data-lang="en">
+                        {item.organization.en}
+                      </p>
+                      <ul>
+                        {item.bullets.map((bullet) => (
+                          <li>
+                            <span data-lang="zh">
+                              <strong>{bullet.label.zh}：</strong>
+                              {bullet.text.zh}
+                            </span>
+                            <span data-lang="en">
+                              <strong>{bullet.label.en}: </strong>
+                              {bullet.text.en}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </article>
+                ))
+              }
+            </div>
+          </section>
+
+          <section class="resume-section">
+            <div class="section-heading">
+              <p class="section-number">02</p>
+              <div>
+                <p class="eyebrow">
+                  <span data-lang="zh">研究经历</span>
+                  <span data-lang="en">Research Experience</span>
+                </p>
+                <h2 data-lang="zh">从研究问题到证据、模式与洞察</h2>
+                <h2 data-lang="en">
+                  From research questions to evidence, patterns, and insight
+                </h2>
+              </div>
+            </div>
+
+            <div class="research-list">
+              {
+                research.map((item, index) => (
+                  <article class="research-item">
+                    <div class="research-index">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
+                    <div>
+                      <div class="research-topline">
+                        <div>
+                          <p class="research-role" data-lang="zh">
+                            {item.role.zh}
+                          </p>
+                          <p class="research-role" data-lang="en">
+                            {item.role.en}
+                          </p>
+                          <h3 data-lang="zh">{item.title.zh}</h3>
+                          <h3 data-lang="en">{item.title.en}</h3>
+                        </div>
+                        <time data-lang="zh">{item.period.zh}</time>
+                        <time data-lang="en">{item.period.en}</time>
+                      </div>
+                      <p class="research-summary" data-lang="zh">
+                        {item.summary.zh}
+                      </p>
+                      <p class="research-summary" data-lang="en">
+                        {item.summary.en}
+                      </p>
+                      <div class="method-list" aria-label="Research methods">
+                        {item.methods.map((method) => (
+                          <>
+                            <span data-lang="zh">{method.zh}</span>
+                            <span data-lang="en">{method.en}</span>
+                          </>
+                        ))}
+                      </div>
+                      <ul class="research-details">
+                        {item.details.map((detail) => (
+                          <li>
+                            <span data-lang="zh">{detail.zh}</span>
+                            <span data-lang="en">{detail.en}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      {item.portfolioHref && (
+                        <a class="case-link" href={item.portfolioHref}>
+                          <span data-lang="zh">查看作品集案例 ↗</span>
+                          <span data-lang="en">View portfolio case ↗</span>
+                        </a>
+                      )}
+                    </div>
+                  </article>
+                ))
+              }
+            </div>
+          </section>
+
+          <section class="resume-section">
+            <div class="section-heading">
+              <p class="section-number">03</p>
+              <div>
+                <p class="eyebrow">
+                  <span data-lang="zh">教育背景</span>
+                  <span data-lang="en">Education</span>
+                </p>
+                <h2 data-lang="zh">心理学与自然科学的跨学科训练</h2>
+                <h2 data-lang="en">
+                  Interdisciplinary training in psychology and natural science
+                </h2>
+              </div>
+            </div>
+
+            <div class="education-list">
+              {
+                education.map((item) => (
+                  <article>
+                    <div>
+                      <h3 data-lang="zh">{item.school.zh}</h3>
+                      <h3 data-lang="en">{item.school.en}</h3>
+                      <p class="degree" data-lang="zh">{item.degree.zh}</p>
+                      <p class="degree" data-lang="en">{item.degree.en}</p>
+                      <p class="coursework" data-lang="zh">
+                        <strong>相关课程：</strong>{item.coursework.zh}
+                      </p>
+                      <p class="coursework" data-lang="en">
+                        <strong>Relevant coursework: </strong>
+                        {item.coursework.en}
+                      </p>
+                    </div>
+                    <div class="education-meta">
+                      <time data-lang="zh">{item.period.zh}</time>
+                      <time data-lang="en">{item.period.en}</time>
+                      <span data-lang="zh">{item.location.zh}</span>
+                      <span data-lang="en">{item.location.en}</span>
+                    </div>
+                  </article>
+                ))
+              }
+            </div>
+          </section>
+
+          <section class="resume-section honors-section">
+            <div class="section-heading">
+              <p class="section-number">04</p>
+              <div>
+                <p class="eyebrow">
+                  <span data-lang="zh">荣誉奖项</span>
+                  <span data-lang="en">Awards & Honors</span>
+                </p>
+                <h2 data-lang="zh">学术表现与实验研究实践</h2>
+                <h2 data-lang="en">
+                  Academic performance and experimental research practice
+                </h2>
+              </div>
+            </div>
+
+            <div class="honors-list">
+              <article>
+                <span>2022 · 2023 · 2024</span>
+                <h3 data-lang="zh">研究生学业奖学金</h3>
+                <h3 data-lang="en">Post-Graduate Academic Scholarship</h3>
+              </article>
+              <article>
+                <span>2023</span>
+                <h3 data-lang="zh">
+                  全国大学生心理与行为在线实验精英赛三等奖
+                </h3>
+                <h3 data-lang="en">
+                  Third Prize, National College Students' Psychology & Behavior
+                  Online Experiment Competition
+                </h3>
+              </article>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <footer>
+        <div>
+          <p class="eyebrow">
+            <span data-lang="zh">联系</span>
+            <span data-lang="en">Contact</span>
+          </p>
+          <h2 data-lang="zh">一起把复杂问题变成清晰洞察。</h2>
+          <h2 data-lang="en">
+            Let's turn complex questions into clear insight.
+          </h2>
+        </div>
+        <div class="footer-links">
+          <a href={`mailto:${email}`}>Email</a>
+          <a href={linkedinUrl} rel="noreferrer">LinkedIn</a>
+          <a href="/portfolio">
+            <span data-lang="zh">作品集</span>
+            <span data-lang="en">Portfolio</span>
+          </a>
+        </div>
+      </footer>
+    </main>
+
+    <style>
+      [data-lang="zh"] {
+        display: none !important;
+      }
+
+      :global(*),
+      :global(*::before),
+      :global(*::after) {
+        box-sizing: border-box;
+      }
+
+      :global(html) {
+        scroll-behavior: smooth;
+      }
+
+      :global(body) {
+        min-width: 320px;
+        margin: 0;
+        background: #fff;
+        color: #111;
+        font-family:
+          system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+        text-underline-offset: 4px;
+      }
+
+      .topbar {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 100;
+        border-bottom: 1px solid #ececec;
+        background: rgb(255 255 255 / 94%);
+        backdrop-filter: blur(14px);
+      }
+
+      .topbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        min-height: 65px;
+        padding: 12px clamp(18px, 4vw, 54px);
+      }
+
+      .brand {
+        display: inline-flex;
+      }
+
+      .brand-logo {
+        display: block;
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+      }
+
+      .topbar-actions,
+      .nav {
+        display: flex;
+        align-items: center;
+      }
+
+      .topbar-actions {
+        gap: 18px;
+      }
+
+      .nav {
+        gap: clamp(13px, 2vw, 25px);
+      }
+
+      .nav a,
+      .print-link {
+        border: 0;
+        padding: 4px 0;
+        background: transparent;
+        color: #666;
+        font: inherit;
+        font-size: 13px;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .nav a:hover,
+      .print-link:hover,
+      .nav .active {
+        color: #111;
+      }
+
+      .nav .active {
+        box-shadow: inset 0 -1px #111;
+      }
+
+      main {
+        padding-top: 65px;
+      }
+
+      .hero {
+        border-bottom: 1px solid #e7e7e7;
+        background: #fff;
+      }
+
+      .hero-inner {
+        width: min(100%, 1180px);
+        margin: 0 auto;
+        padding: clamp(72px, 9vw, 116px) clamp(22px, 4vw, 48px)
+          clamp(48px, 6vw, 72px);
+      }
+
+      .eyebrow {
+        margin: 0 0 14px;
+        color: #777;
+        font-size: 12px;
+        font-weight: 650;
+        letter-spacing: 0.1em;
+        line-height: 1.3;
+        text-transform: uppercase;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.7fr) minmax(220px, 0.55fr);
+        gap: clamp(42px, 7vw, 88px);
+        align-items: end;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 780px;
+        margin-bottom: 20px;
+        font-size: clamp(48px, 6.5vw, 82px);
+        font-weight: 650;
+        letter-spacing: -0.055em;
+        line-height: 0.98;
+      }
+
+      .positioning {
+        max-width: 650px;
+        margin-bottom: 0;
+        color: #444;
+        font-size: clamp(18px, 1.8vw, 23px);
+        letter-spacing: -0.015em;
+        line-height: 1.45;
+      }
+
+      .contact-list {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding-bottom: 3px;
+        font-style: normal;
+        font-size: 13px;
+      }
+
+      .contact-list a {
+        width: fit-content;
+        color: #444;
+        text-decoration-color: #bbb;
+      }
+
+      .profile-meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+        margin: clamp(42px, 5vw, 62px) 0 0;
+        padding-top: 22px;
+        border-top: 1px solid #ddd;
+      }
+
+      .profile-meta div {
+        min-width: 0;
+      }
+
+      .profile-meta dt {
+        margin-bottom: 5px;
+        color: #888;
+        font-size: 11px;
+        font-weight: 650;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .profile-meta dd {
+        margin: 0;
+        color: #333;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .resume-layout {
+        display: grid;
+        grid-template-columns: minmax(240px, 280px) minmax(0, 1fr);
+        gap: clamp(48px, 7vw, 88px);
+        width: min(100%, 1180px);
+        margin: 0 auto;
+        padding: 0 clamp(22px, 4vw, 48px);
+      }
+
+      .resume-aside {
+        padding: clamp(62px, 7vw, 88px) 0;
+      }
+
+      .resume-aside section {
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .resume-aside section:last-child {
+        border-bottom: 0;
+      }
+
+      .resume-aside p:not(.eyebrow) {
+        color: #555;
+        font-size: 14px;
+      }
+
+      .simple-list {
+        margin: 0;
+      }
+
+      .simple-list div {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 10px 0;
+        border-top: 1px solid #e5e5e5;
+      }
+
+      .simple-list dt {
+        font-size: 14px;
+        font-weight: 650;
+      }
+
+      .simple-list dd {
+        margin: 0;
+        color: #777;
+        font-size: 13px;
+        text-align: right;
+      }
+
+      .skill-groups {
+        display: grid;
+        gap: 21px;
+      }
+
+      .skill-groups h3 {
+        margin-bottom: 4px;
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .skill-groups p {
+        margin-bottom: 0;
+        font-size: 13px !important;
+      }
+
+      .resume-main {
+        min-width: 0;
+        border-left: 1px solid #e5e5e5;
+      }
+
+      .resume-section {
+        padding: clamp(62px, 7vw, 88px) 0 clamp(62px, 7vw, 88px)
+          clamp(40px, 5vw, 68px);
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .section-heading {
+        display: grid;
+        grid-template-columns: 34px minmax(0, 1fr);
+        gap: 16px;
+        margin-bottom: clamp(38px, 5vw, 54px);
+      }
+
+      .section-number {
+        color: #aaa;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .section-heading h2 {
+        max-width: 680px;
+        margin-bottom: 0;
+        font-size: clamp(26px, 3vw, 36px);
+        font-weight: 620;
+        letter-spacing: -0.035em;
+        line-height: 1.2;
+      }
+
+      .timeline {
+        margin-left: 50px;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: minmax(130px, 0.42fr) minmax(0, 1.58fr);
+        gap: clamp(26px, 4vw, 52px);
+        padding: 34px 0 44px;
+        border-top: 1px solid #dedede;
+      }
+
+      .timeline-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        color: #777;
+        font-size: 12px;
+      }
+
+      .timeline-content h3,
+      .research-item h3,
+      .education-list h3 {
+        margin-bottom: 5px;
+        font-size: clamp(19px, 2vw, 24px);
+        font-weight: 650;
+        letter-spacing: -0.02em;
+        line-height: 1.3;
+      }
+
+      .organization,
+      .degree {
+        color: #555;
+        font-size: 14px;
+        font-weight: 650;
+      }
+
+      .timeline-content ul,
+      .research-details {
+        padding: 0;
+        margin: 24px 0 0;
+        list-style: none;
+      }
+
+      .timeline-content li,
+      .research-details li {
+        position: relative;
+        padding: 12px 0 12px 20px;
+        border-top: 1px solid #ededed;
+        color: #444;
+        font-size: 14px;
+      }
+
+      .timeline-content li::before,
+      .research-details li::before {
+        position: absolute;
+        top: 20px;
+        left: 1px;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #777;
+        content: "";
+      }
+
+      .research-list {
+        margin-left: 50px;
+      }
+
+      .research-item {
+        display: grid;
+        grid-template-columns: 30px minmax(0, 1fr);
+        gap: 18px;
+        padding: 38px 0 48px;
+        border-top: 1px solid #dedede;
+      }
+
+      .research-index {
+        color: #aaa;
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      .research-topline {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .research-topline time {
+        padding-top: 3px;
+        color: #777;
+        font-size: 12px;
+        white-space: nowrap;
+      }
+
+      .research-role {
+        margin-bottom: 8px;
+        color: #777;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .research-summary {
+        max-width: 760px;
+        margin: 18px 0;
+        color: #444;
+        font-size: 15px;
+      }
+
+      .method-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .method-list span {
+        padding: 5px 9px;
+        border: 0;
+        border-radius: 4px;
+        background: #f3f4f5;
+        color: #555;
+        font-size: 11px;
+      }
+
+      .research-details {
+        margin-top: 25px;
+      }
+
+      .case-link {
+        display: inline-block;
+        margin-top: 25px;
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .education-list {
+        margin-left: 50px;
+      }
+
+      .education-list article {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(130px, 0.25fr);
+        gap: 45px;
+        padding: 34px 0 42px;
+        border-top: 1px solid #dedede;
+      }
+
+      .coursework {
+        max-width: 720px;
+        margin: 22px 0 0;
+        color: #777;
+        font-size: 13px;
+      }
+
+      .education-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        color: #777;
+        font-size: 12px;
+        text-align: right;
+      }
+
+      .honors-list {
+        margin-left: 50px;
+        border-top: 1px solid #dedede;
+      }
+
+      .honors-list article {
+        display: grid;
+        grid-template-columns: minmax(135px, 0.28fr) minmax(0, 1fr);
+        gap: 32px;
+        min-height: 0;
+        padding: 26px 0;
+        border-bottom: 1px solid #ededed;
+        background: #fff;
+      }
+
+      .honors-list span {
+        display: block;
+        margin-bottom: 0;
+        color: #777;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+      }
+
+      .honors-list h3 {
+        margin-bottom: 0;
+        font-size: clamp(17px, 1.8vw, 21px);
+        font-weight: 620;
+        line-height: 1.35;
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 60px;
+        width: min(100%, 1180px);
+        margin: 0 auto;
+        padding: clamp(58px, 7vw, 84px) clamp(22px, 4vw, 48px);
+        border-top: 1px solid #e5e5e5;
+        background: #fff;
+        color: #111;
+      }
+
+      footer h2 {
+        max-width: 650px;
+        margin: 0;
+        font-size: clamp(27px, 3.5vw, 42px);
+        font-weight: 620;
+        letter-spacing: -0.035em;
+        line-height: 1.15;
+      }
+
+      footer .eyebrow {
+        color: #777;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-end;
+        gap: 8px;
+        font-size: 14px;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .resume-layout {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        .resume-aside {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 40px;
+          border-bottom: 1px solid #e5e5e5;
+        }
+
+        .resume-aside section {
+          margin: 0;
+        }
+
+        .resume-aside section:first-child {
+          grid-column: 1 / -1;
+        }
+
+        .resume-main {
+          border-left: 0;
+        }
+
+        .resume-section {
+          padding-left: 0;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .topbar-inner {
+          align-items: flex-start;
+        }
+
+        .topbar-actions {
+          justify-content: flex-end;
+          flex-wrap: wrap;
+          gap: 8px 14px;
+        }
+
+        .nav {
+          gap: 13px;
+        }
+
+        .nav a,
+        .print-link {
+          font-size: 12px;
+        }
+
+        .linkedin-link {
+          display: none;
+        }
+
+        .hero-inner {
+          padding-top: 75px;
+        }
+
+        h1 {
+          font-size: clamp(44px, 14vw, 60px);
+        }
+
+        .profile-meta {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+
+        .profile-meta div {
+          display: grid;
+          grid-template-columns: 82px minmax(0, 1fr);
+          gap: 12px;
+        }
+
+        .resume-aside {
+          grid-template-columns: 1fr;
+        }
+
+        .resume-aside section:first-child {
+          grid-column: auto;
+        }
+
+        .section-heading {
+          grid-template-columns: 1fr;
+          gap: 5px;
+        }
+
+        .timeline,
+        .research-list,
+        .education-list,
+        .honors-list {
+          margin-left: 0;
+        }
+
+        .timeline-item {
+          grid-template-columns: 1fr;
+        }
+
+        .timeline-meta {
+          flex-flow: row wrap;
+          gap: 5px 12px;
+        }
+
+        .research-item {
+          grid-template-columns: 28px minmax(0, 1fr);
+          gap: 12px;
+        }
+
+        .research-topline {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+
+        .education-list article {
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+
+        .education-meta {
+          text-align: left;
+        }
+
+        .honors-list {
+          grid-template-columns: 1fr;
+        }
+
+        footer {
+          flex-direction: column;
+        }
+
+        .footer-links {
+          align-items: flex-start;
+        }
+      }
+
+      @media print {
+        :global(body) {
+          background: #fff;
+          color: #111;
+          font-size: 10pt;
+        }
+
+        .topbar,
+        .profile-meta,
+        .case-link,
+        footer {
+          display: none;
+        }
+
+        main {
+          padding-top: 0;
+        }
+
+        .hero {
+          background: #fff;
+        }
+
+        .hero-inner,
+        .resume-aside,
+        .resume-section {
+          padding: 24px;
+        }
+
+        .hero-inner {
+          padding-bottom: 35px;
+        }
+
+        h1 {
+          font-size: 38pt;
+        }
+
+        .positioning {
+          font-size: 15pt;
+        }
+
+        .resume-layout {
+          display: block;
+        }
+
+        .resume-aside {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          border-right: 0;
+        }
+
+        .resume-main {
+          border-left: 0;
+        }
+
+        .resume-aside section:first-child {
+          grid-column: 1 / -1;
+        }
+
+        .section-heading h2 {
+          font-size: 20pt;
+        }
+
+        .timeline,
+        .research-list,
+        .education-list,
+        .honors-list {
+          margin-left: 0;
+        }
+
+        .timeline-item,
+        .research-item,
+        .education-list article,
+        .honors-list article {
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </body>
+</html>
