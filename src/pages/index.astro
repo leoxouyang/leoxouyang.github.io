@@ -87,6 +87,33 @@ const latestPosts = posts
           <p class="eyebrow">Profile</p>
           <h1 data-lang="zh">我是陆政豪，也可以叫我欧阳小司</h1>
           <h1 data-lang="en">I am Zhenghao Lu.</h1>
+
+          <div class="profile-summary">
+            <div class="profile-summary-intro">
+              <p class="profile-summary-label">
+                <span data-lang="zh">职业定位</span>
+                <span data-lang="en">Positioning</span>
+              </p>
+              <p class="profile-summary-statement" data-lang="zh">
+                用研究与数据理解人，并支持更清晰的决策。
+              </p>
+              <p class="profile-summary-statement" data-lang="en">
+                Using research and data to understand people and support clearer
+                decisions.
+              </p>
+            </div>
+            <p class="profile-summary-copy" data-lang="zh">
+              心理学硕士，拥有行为研究、受众洞察与数据分析经验。我通过问卷、实验和互动数据识别需求与行为模式，并将复杂证据转化为清晰、可执行的建议。
+            </p>
+            <p class="profile-summary-copy" data-lang="en">
+              Psychology Master's graduate with experience in behavioral
+              research, audience insight, and data analysis. I use surveys,
+              experiments, and engagement data to identify needs and behavioral
+              patterns, then translate complex evidence into clear, actionable
+              recommendations.
+            </p>
+          </div>
+
           <p class="lead" data-lang="zh">
             如果你想快速了解我，可以点击
             <a href={resumePdf}>CV</a>，也可以点击
@@ -350,6 +377,47 @@ const latestPosts = posts
         font-size: 24px;
       }
 
+      .profile-summary {
+        display: grid;
+        grid-template-columns: minmax(220px, 0.85fr) minmax(0, 1.25fr);
+        gap: clamp(28px, 4vw, 56px);
+        margin-top: 32px;
+        padding: 28px 0;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #eee;
+      }
+
+      .profile-summary-intro {
+        min-width: 0;
+      }
+
+      .profile-summary-label {
+        margin: 0 0 14px;
+        color: #888;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .profile-summary-statement {
+        max-width: 380px;
+        margin: 0;
+        color: #222;
+        font-size: clamp(17px, 1.8vw, 21px);
+        font-weight: 600;
+        line-height: 1.45;
+      }
+
+      .profile-summary-copy {
+        align-self: end;
+        max-width: 680px;
+        margin: 0;
+        color: #555;
+        font-size: 15px;
+        line-height: 1.75;
+      }
+
       .lead {
         max-width: none;
         margin: 20px 0 0;
@@ -548,6 +616,13 @@ const latestPosts = posts
 
         h2 {
           font-size: 22px;
+        }
+
+        .profile-summary {
+          grid-template-columns: 1fr;
+          gap: 22px;
+          margin-top: 26px;
+          padding: 24px 0;
         }
 
         .section-heading,
