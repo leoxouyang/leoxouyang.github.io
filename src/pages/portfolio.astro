@@ -9,35 +9,25 @@ const linkedinUrl = "https://www.linkedin.com/in/zhenghao-lu-a6a396372/";
 
 const case1Figures = [
   {
-    title: "Conceptual model",
+    title: "Study framework",
     src: "/images/research/daily-hope/model-overview.png",
-    alt: "Within-person mediation model, moderation model, and lagged model for hope, exam stress, psychological need satisfaction, and affect.",
+    alt: "Study framework showing the primary same-day associations and secondary moderation, indirect-association, and lagged questions examined for hope, exam stress, need satisfaction, and affect.",
     featured: true,
   },
   {
-    title: "Daily trends across exam week",
-    src: "/images/research/daily-hope/daily-trends.png",
-    alt: "Daily mean trends of key variables across the seven-day exam week.",
+    title: "Daily trends across the seven-day study",
+    src: "/images/research/daily-hope/daily-trends-primary.png",
+    alt: "Daily means and 95% confidence intervals for positive affect, negative affect, hope, exam stress, and need satisfaction across the seven-day study.",
   },
   {
-    title: "Hope x stress x need satisfaction: negative affect",
-    src: "/images/research/daily-hope/three-way-negative-affect.png",
-    alt: "Three-way interaction plot showing exam stress and need satisfaction effects on negative affect across low and high hope levels.",
+    title: "Primary within-person associations",
+    src: "/images/research/daily-hope/primary-within-person-effects.png",
+    alt: "Standardized within-person associations of daily hope, exam stress, and need satisfaction with positive and negative affect, with 95% confidence intervals.",
   },
   {
-    title: "Hope x stress x need satisfaction: positive affect",
-    src: "/images/research/daily-hope/three-way-positive-affect.png",
-    alt: "Three-way interaction plot showing exam stress and need satisfaction effects on positive affect across low and high hope levels.",
-  },
-  {
-    title: "Gender moderation: negative affect",
-    src: "/images/research/daily-hope/gender-negative-affect.png",
-    alt: "Regression plot showing gender moderation of the effect of daily hope on negative affect.",
-  },
-  {
-    title: "Gender moderation: positive affect",
-    src: "/images/research/daily-hope/gender-positive-affect.png",
-    alt: "Regression plot showing gender moderation of the effect of daily hope on positive affect.",
+    title: "Exploratory three-way interaction for negative affect",
+    src: "/images/research/daily-hope/three-way-exploratory.png",
+    alt: "Exploratory conditional predictions for negative affect across daily hope, exam stress, and need satisfaction; this analysis was not preregistered and requires replication.",
   },
 ];
 
@@ -47,33 +37,33 @@ const cases = [
     title:
       "Case 1: Hope in the Face of Exam Stress: Daily Psychological Resources and Adolescent Well-Being",
     subtitle:
-      "A 7-day diary study on subjective well-being, hope, academic stress, and daily need satisfaction.",
+      "A 7-day within-person diary study of hope, exam stress, need satisfaction, and same-day affect.",
     context:
-      "High school students' well-being is not static. Their emotional experiences may fluctuate from day to day depending on academic stress, hope, and psychological need satisfaction. This project aimed to understand these daily dynamics using a longitudinal diary design.",
+      "Adolescents' emotional experiences fluctuate from day to day, especially during a naturally occurring high-stress period. This project examined how daily deviations in hope, exam stress, and brief need satisfaction were associated with same-day positive and negative affect during the week before exams.",
     status: "In Progress",
     role: "Co-Principal Investigator",
     methods: [
       "7-day diary study",
       "Repeated-measures data cleaning",
       "Within-person and between-person decomposition",
-      "Multilevel modeling in R",
-      "Data visualization and result interpretation",
+      "Multilevel modeling and sensitivity analysis in R",
+      "Reproducible analysis and data visualization",
     ],
     overview: [
-      "292 valid participants",
-      "1,752 daily observations",
-      "7 consecutive diary waves",
-      "Repeated-measures psychological data",
+      "359 participants in the locked source sample",
+      "311 participants in the primary analysis sample",
+      "1,989 complete core person-days",
+      "192-participant complete-week sensitivity sample",
     ],
     questions: [
       "How do students' well-being and emotional experiences fluctuate across days?",
-      "How are daily hope and academic stress associated with daily well-being?",
+      "How are daily hope, exam stress, and need satisfaction associated with same-day affect?",
       "How can we distinguish within-person changes from between-person differences?",
     ],
     process: [
       {
         title: "Data Preparation",
-        text: "Screened and cleaned repeated-measures data to ensure accuracy, completeness, and consistency.",
+        text: "Locked the source data, scoring, inclusion rules, and missing-data handling while retaining incomplete diary days rather than imputing them.",
       },
       {
         title: "Data Structuring",
@@ -81,27 +71,27 @@ const cases = [
       },
       {
         title: "Statistical Modeling",
-        text: "Conducted multilevel modeling in R to distinguish within-person fluctuations from between-person differences.",
+        text: "Used multilevel models in R to separate within-person fluctuations from between-person differences, control for study day, and test alternative samples and model specifications.",
       },
       {
         title: "Research Communication",
-        text: "Contributed to result interpretation, visualization, and manuscript preparation.",
+        text: "Translated the reanalysis into reproducible tables and figures while separating primary same-day associations from exploratory interaction and lagged analyses.",
       },
     ],
     insights: [
       {
         title:
-          "Student well-being should be understood as a dynamic daily experience, not only as a stable trait.",
-        text: "Students may experience meaningful day-to-day changes in emotional states, which suggests the importance of tracking experiences over time rather than relying only on one-time measurements.",
+          "Affective adjustment changed meaningfully across the seven-day study.",
+        text: "Positive affect and hope declined on average, while negative affect and exam stress increased. Local nonlinear patterns mean these trajectories should not be treated as strictly monotonic.",
       },
       {
-        title: "Hope may function as a daily psychological resource.",
-        text: "Daily hope can help explain why students feel better on some days than others, highlighting the value of psychological resources in stressful academic contexts.",
+        title: "Daily hope, stress, and need satisfaction showed robust same-day associations with affect.",
+        text: "On days when students reported more hope and need satisfaction than usual, they also reported more positive and less negative affect; higher-than-usual stress showed the opposite pattern. These are within-person associations, not causal effects.",
       },
       {
         title:
-          "Academic stress needs to be interpreted at both individual and daily levels.",
-        text: "Some students may generally experience higher stress than others, while the same student may also experience unusually stressful days. These two patterns require different interpretations.",
+          "The evidence supports an association-focused, not causal, interpretation.",
+        text: "Hope did not show a stable buffering interaction with stress, and adjusted next-day findings were not stable. Same-day indirect associations and the negative-affect three-way interaction remain secondary or exploratory evidence.",
       },
     ],
     figures: case1Figures,
