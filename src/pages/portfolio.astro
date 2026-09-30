@@ -877,6 +877,11 @@ const mappingRows = [
         align-items: start;
       }
 
+      .about-grid > *,
+      .case-layout > * {
+        min-width: 0;
+      }
+
       .copy p {
         margin: 0 0 16px;
       }
@@ -923,6 +928,10 @@ const mappingRows = [
       .case-body {
         display: grid;
         gap: 34px;
+      }
+
+      .case-body > * {
+        min-width: 0;
       }
 
       .content-block {
