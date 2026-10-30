@@ -1,11 +1,9 @@
 ---
-import PageTransition from "../components/PageTransition.astro";
+import Layout from "../layouts/Layout.astro";
+import { site } from "../site";
 
-const name = "Zhenghao Lu";
-const email = "zhenghao_lu@outlook.com";
-const phone = "+86 155 8086 3265";
-const websiteUrl = "https://leoxouyang.github.io";
-const linkedinUrl = "https://www.linkedin.com/in/zhenghao-lu-a6a396372/";
+const { name, email, linkedinUrl } = site;
+const websiteUrl = site.url;
 
 const experience = [
   {
@@ -346,51 +344,12 @@ const skillGroups = [
 ];
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Zhenghao Lu — psychology researcher working across behavioral research, data analysis, and insight development."
-    />
-    <link rel="icon" type="image/png" href="/images/site-logo.png" />
-    <title>CV | {name}</title>
-    <PageTransition />
-  </head>
-
-  <body>
-    <header
-      class="topbar"
-      transition:name="site-header"
-      transition:animate="none"
-    >
-      <div class="topbar-inner">
-        <a class="brand" href="/" aria-label="Back to homepage">
-          <img
-            class="brand-logo"
-            src="/images/site-logo.png"
-            alt={name}
-            width="40"
-            height="40"
-          />
-        </a>
-        <div class="topbar-actions">
-          <nav class="nav" aria-label="Primary navigation">
-            <a class="active" href="/cv">
-              CV
-            </a>
-            <a href="/portfolio">Portfolio</a>
-            <a class="linkedin-link" href={linkedinUrl} rel="noreferrer"
-              >LinkedIn</a
-            >
-            <button class="print-link" type="button" onclick="window.print()">
-              Print
-            </button>
-          </nav>
-        </div>
-      </div>
-    </header>
+<Layout
+  title={`CV | ${name}`}
+  description="Zhenghao Lu — psychology researcher working across behavioral research, data analysis, and insight development."
+  active="cv"
+  print
+>
 
     <main>
       <section class="hero">
@@ -411,7 +370,6 @@ const skillGroups = [
             </div>
             <address class="contact-list">
               <a href={`mailto:${email}`}>{email}</a>
-              <a href={`tel:${phone.replaceAll(" ", "")}`}>{phone}</a>
               <a href={websiteUrl} rel="noreferrer">leoxouyang.github.io</a>
             </address>
           </div>
@@ -725,12 +683,6 @@ const skillGroups = [
         display: none !important;
       }
 
-      :global(*),
-      :global(*::before),
-      :global(*::after) {
-        box-sizing: border-box;
-      }
-
       :global(html) {
         scroll-behavior: smooth;
       }
@@ -751,71 +703,6 @@ const skillGroups = [
       a {
         color: inherit;
         text-underline-offset: 4px;
-      }
-
-      .topbar {
-        position: fixed;
-        inset: 0 0 auto;
-        z-index: 100;
-        border-bottom: 1px solid #ececec;
-        background: rgb(255 255 255 / 94%);
-        backdrop-filter: blur(14px);
-      }
-
-      .topbar-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        min-height: 65px;
-        padding: 12px clamp(18px, 4vw, 54px);
-      }
-
-      .brand {
-        display: inline-flex;
-      }
-
-      .brand-logo {
-        display: block;
-        width: 40px;
-        height: 40px;
-        object-fit: contain;
-      }
-
-      .topbar-actions,
-      .nav {
-        display: flex;
-        align-items: center;
-      }
-
-      .topbar-actions {
-        gap: 18px;
-      }
-
-      .nav {
-        gap: clamp(13px, 2vw, 25px);
-      }
-
-      .nav a,
-      .print-link {
-        border: 0;
-        padding: 4px 0;
-        background: transparent;
-        color: #666;
-        font: inherit;
-        font-size: 14px;
-        text-decoration: none;
-        cursor: pointer;
-      }
-
-      .nav a:hover,
-      .print-link:hover,
-      .nav .active {
-        color: #111;
-      }
-
-      .nav .active {
-        box-shadow: inset 0 -1px #111;
       }
 
       main {
@@ -1270,29 +1157,6 @@ const skillGroups = [
       }
 
       @media (max-width: 700px) {
-        .topbar-inner {
-          align-items: flex-start;
-        }
-
-        .topbar-actions {
-          justify-content: flex-end;
-          flex-wrap: wrap;
-          gap: 8px 14px;
-        }
-
-        .nav {
-          gap: 13px;
-        }
-
-        .nav a,
-        .print-link {
-          font-size: 13px;
-        }
-
-        .linkedin-link {
-          display: none;
-        }
-
         .hero-inner {
           padding-top: 75px;
         }
@@ -1372,7 +1236,6 @@ const skillGroups = [
           font-size: 10pt;
         }
 
-        .topbar,
         .profile-meta,
         .case-link,
         footer {
@@ -1443,5 +1306,4 @@ const skillGroups = [
         }
       }
     </style>
-  </body>
-</html>
+</Layout>

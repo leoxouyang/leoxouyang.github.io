@@ -22,3 +22,12 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local development documentation
+docs/
+
+# local Superpowers session files
+.superpowers/
+
+# local blog archive (moved out of the job site, kept for a future blog site)
+_blog-archive/

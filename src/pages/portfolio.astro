@@ -1,32 +1,37 @@
 ---
-import LanguageToggle from "../components/LanguageToggle.astro";
-import PageTransition from "../components/PageTransition.astro";
+import Layout from "../layouts/Layout.astro";
+import { site } from "../site";
 
-const name = "Zhenghao Lu";
-const email = "zhenghao_lu@outlook.com";
-const resumePdf = "/cv";
-const linkedinUrl = "https://www.linkedin.com/in/zhenghao-lu-a6a396372/";
+const { name, email } = site;
 
 const case1Figures = [
   {
     title: "Study framework",
-    src: "/images/research/daily-hope/model-overview.png",
+    src: "/images/research/daily-hope/model-overview.webp",
+    width: 1504,
+    height: 995,
     alt: "Study framework showing the primary same-day associations and secondary moderation, indirect-association, and lagged questions examined for hope, exam stress, need satisfaction, and affect.",
     featured: true,
   },
   {
     title: "Daily trends across the seven-day study",
-    src: "/images/research/daily-hope/daily-trends-primary.png",
+    src: "/images/research/daily-hope/daily-trends-primary.webp",
+    width: 2000,
+    height: 1375,
     alt: "Daily means and 95% confidence intervals for positive affect, negative affect, hope, exam stress, and need satisfaction across the seven-day study.",
   },
   {
     title: "Primary within-person associations",
-    src: "/images/research/daily-hope/primary-within-person-effects.png",
+    src: "/images/research/daily-hope/primary-within-person-effects.webp",
+    width: 2000,
+    height: 1125,
     alt: "Standardized within-person associations of daily hope, exam stress, and need satisfaction with positive and negative affect, with 95% confidence intervals.",
   },
   {
     title: "Exploratory three-way interaction for negative affect",
-    src: "/images/research/daily-hope/three-way-exploratory.png",
+    src: "/images/research/daily-hope/three-way-exploratory.webp",
+    width: 2000,
+    height: 1200,
     alt: "Exploratory conditional predictions for negative affect across daily hope, exam stress, and need satisfaction; this analysis was not preregistered and requires replication.",
   },
 ];
@@ -174,7 +179,9 @@ const cases = [
     figures: [
       {
         title: "Psychosocial resource profiles",
-        src: "/images/research/burnout/resource-profiles.png",
+        src: "/images/research/burnout/resource-profiles.webp",
+        width: 2000,
+        height: 1158,
         alt: "Latent profile patterns of psychosocial resources among female kindergarten teachers.",
         featured: true,
       },
@@ -243,7 +250,9 @@ const cases = [
     figures: [
       {
         title: "Hypothesized pathway model",
-        src: "/images/research/parenting/model-pathways.png",
+        src: "/images/research/parenting/model-pathways.webp",
+        width: 1147,
+        height: 643,
         alt: "Hypothesized model linking parenting styles, social anxiety, Internet use, and psychological well-being.",
         featured: true,
       },
@@ -331,45 +340,11 @@ const mappingRows = [
 ];
 ---
 
-<html lang="zh-CN" data-lang="zh">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/png" href="/images/site-logo.png" />
-    <title>Portfolio | {name}</title>
-    <PageTransition />
-  </head>
-
-  <body>
-    <header
-      class="topbar"
-      transition:name="site-header"
-      transition:animate="none"
-    >
-      <div class="topbar-inner">
-        <a class="brand" href="/">
-          <img
-            class="brand-logo"
-            src="/images/site-logo.png"
-            alt={name}
-            width="40"
-            height="40"
-          />
-        </a>
-        <div class="topbar-actions">
-          <nav class="nav">
-            <a href={resumePdf}>Resume</a>
-            <a href={linkedinUrl} rel="noreferrer">LinkedIn</a>
-            <a class="active" href="/portfolio">Portfolio</a>
-            <a href="/欧阳小司">
-              <span data-lang="zh">欧阳小司的博客</span>
-              <span data-lang="en">Thoughts</span>
-            </a>
-          </nav>
-          <LanguageToggle />
-        </div>
-      </div>
-    </header>
+<Layout
+  title={`Portfolio | ${name}`}
+  description="Behavioral research case studies by Zhenghao Lu: a 7-day diary study of adolescent hope under exam stress, burnout profiles among kindergarten teachers, and parenting pathways to adolescent well-being."
+  active="portfolio"
+>
 
     <main>
       <section class="intro">
@@ -554,7 +529,11 @@ const mappingRows = [
                             <img
                               src={figure.src}
                               alt={figure.alt}
-                              loading="eager"
+                              width={figure.width}
+                              height={figure.height}
+                              loading="lazy"
+                              decoding="async"
+                              draggable="false"
                             />
                             <figcaption>{figure.title}</figcaption>
                           </figure>
@@ -686,11 +665,6 @@ const mappingRows = [
     </script>
 
     <style>
-      :global(*),
-      :global(*::before),
-      :global(*::after) {
-        box-sizing: border-box;
-      }
 
       :global(html, body) {
         min-height: 100%;
@@ -705,64 +679,6 @@ const mappingRows = [
           "Segoe UI",
           Roboto,
           sans-serif;
-      }
-
-      .topbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: #fff;
-        border-bottom: 1px solid #eee;
-        z-index: 100;
-      }
-
-      .topbar-inner {
-        width: 100%;
-        padding: 12px clamp(18px, 4vw, 48px);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .brand {
-        display: inline-flex;
-        align-items: center;
-        text-decoration: none;
-        color: #111;
-        opacity: 1;
-      }
-
-      .brand-logo {
-        display: block;
-        width: 40px;
-        height: 40px;
-        object-fit: contain;
-      }
-
-      .nav {
-        display: flex;
-        gap: 16px;
-        align-items: center;
-      }
-
-      .nav a {
-        text-decoration: none;
-        color: #111;
-        font-size: 14px;
-        opacity: 0.75;
-        line-height: 1;
-        display: flex;
-        align-items: center;
-      }
-
-      .nav a:hover,
-      .nav a.active {
-        opacity: 1;
-      }
-
-      .nav a.active {
-        font-weight: 600;
       }
 
       .intro {
@@ -1150,21 +1066,6 @@ const mappingRows = [
       }
 
       @media (max-width: 720px) {
-        .topbar-inner {
-          align-items: flex-start;
-          gap: 12px;
-          padding: 12px 18px;
-        }
-
-        .nav {
-          justify-content: flex-end;
-          flex-wrap: wrap;
-          gap: 10px 14px;
-        }
-
-        .nav a {
-          font-size: 13px;
-        }
 
         .intro {
           padding: 128px 0 56px;
@@ -1205,5 +1106,4 @@ const mappingRows = [
         }
       }
     </style>
-  </body>
-</html>
+</Layout>

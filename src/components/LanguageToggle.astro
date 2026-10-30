@@ -53,6 +53,8 @@
     });
 
     document.addEventListener("astro:after-swap", () => {
+      // Only bilingual pages (those rendering the toggle) switch language.
+      if (!document.querySelector("[data-lang-option]")) return;
       applyLanguage(getStoredLanguage() || initialLanguage);
     });
   })();
@@ -64,11 +66,6 @@
     display: none !important;
   }
 
-  .topbar-actions {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
 
   .language-switch {
     display: inline-flex;
@@ -101,11 +98,4 @@
     color: #111;
   }
 
-  @media (max-width: 720px) {
-    .topbar-actions {
-      justify-content: flex-end;
-      flex-wrap: wrap;
-      gap: 10px 14px;
-    }
-  }
 </style>

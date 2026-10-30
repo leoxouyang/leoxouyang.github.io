@@ -4,4 +4,9 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://leoxouyang.github.io',
+  // Old URLs that now live on the portfolio page
+  redirects: {
+    '/research': '/portfolio',
+    '/ux': '/portfolio',
+  },
 });

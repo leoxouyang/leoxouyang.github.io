@@ -1,76 +1,24 @@
 ---
-import LanguageToggle from "../components/LanguageToggle.astro";
-import PageTransition from "../components/PageTransition.astro";
+import Layout from "../layouts/Layout.astro";
+import { site } from "../site";
 
-const name = "Zhenghao Lu";
-const email = "zhenghao_lu@outlook.com";
-const resumePdf = "/cv";
-const linkedinUrl = "https://www.linkedin.com/in/zhenghao-lu-a6a396372/";
-const posts = Object.values(
-  import.meta.glob("./posts/*.md", { eager: true }),
-) as Array<{
-  url: string;
-  frontmatter: {
-    title: string;
-    date: string;
-    description?: string;
-  };
-}>;
-const latestPosts = posts
-  .sort(
-    (a, b) =>
-      new Date(b.frontmatter.date).valueOf() -
-      new Date(a.frontmatter.date).valueOf(),
-  )
-  .slice(0, 3);
+const { name, nameZh, email, linkedinUrl } = site;
+const cvUrl = "/cv";
 ---
 
-<html lang="zh-CN" data-lang="zh">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/png" href="/images/site-logo.png" />
-    <title>{name}</title>
-    <PageTransition />
-  </head>
-
-  <body>
-    {/* 顶部导航栏 */}
-    <header
-      class="topbar"
-      transition:name="site-header"
-      transition:animate="none"
-    >
-      <div class="topbar-inner">
-        <a class="brand" href="/">
-          <img
-            class="brand-logo"
-            src="/images/site-logo.png"
-            alt={name}
-            width="40"
-            height="40"
-          />
-        </a>
-        <div class="topbar-actions">
-          <nav class="nav">
-            <a href={resumePdf}>CV</a>
-            <a href={linkedinUrl} rel="noreferrer">LinkedIn</a>
-            <a href="/portfolio">Portfolio</a>
-            <a href="/欧阳小司">
-              <span data-lang="zh">欧阳小司的博客</span>
-              <span data-lang="en">Thoughts</span>
-            </a>
-          </nav>
-          <LanguageToggle />
-        </div>
-      </div>
-    </header>
+<Layout
+  title={`${name} ${nameZh} | Research & Data Insight`}
+  description="陆政豪（Zhenghao Lu），心理学硕士，专注行为研究、受众洞察与数据分析。Psychology Master's graduate working on behavioral research, audience insight, and data analysis."
+  lang="zh-CN"
+  dataLang="zh"
+  languageToggle
+>
 
     <main>
       <section class="hero" aria-label="Intro">
         <div class="stack">
           <div class="name">
-            <span data-lang="zh">陆政豪</span>
+            <span data-lang="zh">{nameZh}</span>
             <span data-lang="en">{name}</span>
           </div>
           <div class="sub">{email}</div>
@@ -115,22 +63,19 @@ const latestPosts = posts
           </div>
 
           <p class="lead" data-lang="zh">
-            如果你想快速了解我，可以点击
-            <a href={resumePdf}>CV</a>，也可以点击
+            如果你想快速了解我，可以查看 <a href={cvUrl}>CV</a>，或在
             <a href={linkedinUrl} rel="noreferrer">LinkedIn</a>
-            了解我的职业轨迹；如果你想了解我如何思考，可以读「
-            <a href="/欧阳小司">欧阳小司的博客</a>」。
+            了解我的职业轨迹；如果你想看看我做过的研究，可以浏览
+            <a href="/portfolio">作品集</a>。
           </p>
           <p class="lead" data-lang="en">
-            For a quick overview, read my <a href={resumePdf}>CV</a> or visit my <a
-              href={linkedinUrl}
-              rel="noreferrer">LinkedIn</a
-            >. For a better sense of how I think, read my
-            <a href="/欧阳小司">Thoughts</a>.
+            For a quick overview, read my <a href={cvUrl}>CV</a> or visit my
+            <a href={linkedinUrl} rel="noreferrer">LinkedIn</a>. To see the
+            research I have done, browse my <a href="/portfolio">portfolio</a>.
           </p>
 
           <div class="quick-links" aria-label="Quick links">
-            <a href={resumePdf}>CV</a>
+            <a href={cvUrl}>CV</a>
             <a href={linkedinUrl} rel="noreferrer">LinkedIn</a>
             <a href={`mailto:${email}`}>Email</a>
           </div>
@@ -142,7 +87,7 @@ const latestPosts = posts
           <div class="section-heading">
             <div>
               <p class="eyebrow">Portfolio</p>
-              <h1 data-lang="zh">行为研究作品集</h1>
+              <h2 data-lang="zh">行为研究作品集</h2>
               <h2 data-lang="en">Behavioral Research Portfolio</h2>
             </div>
             <a class="text-link" href="/portfolio">
@@ -168,44 +113,6 @@ const latestPosts = posts
         </div>
       </section>
 
-      <section class="section">
-        <div class="section-inner">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Notes</p>
-              <h2>Thoughts</h2>
-            </div>
-            <a class="text-link" href="/欧阳小司">
-              <span data-lang="zh">全部文章</span>
-              <span data-lang="en">All thoughts</span>
-            </a>
-          </div>
-
-          <div class="post-list">
-            {
-              latestPosts.length > 0 ? (
-                latestPosts.map((post) => (
-                  <a class="post-item" href={post.url}>
-                    <span>
-                      <strong>{post.frontmatter.title}</strong>
-                      {post.frontmatter.description && (
-                        <small>{post.frontmatter.description}</small>
-                      )}
-                    </span>
-                    <time>{post.frontmatter.date}</time>
-                  </a>
-                ))
-              ) : (
-                <p class="empty-copy">
-                  <span data-lang="zh">还没有文章。</span>
-                  <span data-lang="en">No articles yet.</span>
-                </p>
-              )
-            }
-          </div>
-        </div>
-      </section>
-
       <section class="section contact">
         <div class="section-inner">
           <p class="eyebrow">Contact</p>
@@ -214,18 +121,13 @@ const latestPosts = posts
           <div class="contact-links">
             <a href={`mailto:${email}`}>{email}</a>
             <a href={linkedinUrl} rel="noreferrer">LinkedIn</a>
-            <a href={resumePdf}>Resume</a>
+            <a href={cvUrl}>CV</a>
           </div>
         </div>
       </section>
     </main>
 
     <style>
-      :global(*),
-      :global(*::before),
-      :global(*::after) {
-        box-sizing: border-box;
-      }
 
       :global(html, body) {
         min-height: 100%;
@@ -241,53 +143,6 @@ const latestPosts = posts
           "Segoe UI",
           Roboto,
           sans-serif;
-      }
-
-      .topbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: #fff;
-        border-bottom: 1px solid #eee;
-        z-index: 100;
-      }
-      .topbar-inner {
-        width: 100%;
-        padding: 12px clamp(18px, 4vw, 48px);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .brand {
-        display: inline-flex;
-        align-items: center;
-        text-decoration: none;
-        color: #111;
-        opacity: 1;
-      }
-      .brand-logo {
-        display: block;
-        width: 40px;
-        height: 40px;
-        object-fit: contain;
-      }
-      .nav {
-        display: flex;
-        gap: 16px;
-        align-items: center;
-      }
-      .nav a {
-        text-decoration: none;
-        color: #111;
-        font-size: 14px;
-        opacity: 0.75;
-        line-height: 1;
-        display: flex;
-        align-items: center;
-      }
-      .nav a:hover {
-        opacity: 1;
       }
 
       .hero {
@@ -338,10 +193,6 @@ const latestPosts = posts
         padding: 72px 0;
         border-top: 1px solid #f1f1f1;
         scroll-margin-top: 96px;
-      }
-
-      .section-muted {
-        background: #fff;
       }
 
       .section-inner {
@@ -494,25 +345,6 @@ const latestPosts = posts
         white-space: nowrap;
       }
 
-      .empty-panel {
-        border: 1px solid #e8e8e8;
-        padding: 24px;
-        background: #fff;
-        color: #555;
-        line-height: 1.7;
-      }
-
-      .empty-panel p,
-      .empty-copy {
-        margin: 0;
-      }
-
-      .empty-title {
-        color: #111;
-        font-weight: 600;
-        margin-bottom: 8px;
-      }
-
       .research-preview {
         max-width: none;
         color: #444;
@@ -524,83 +356,11 @@ const latestPosts = posts
         margin: 0;
       }
 
-      .post-list {
-        display: grid;
-        gap: 0;
-        border-top: 1px solid #eee;
-      }
-
-      .post-item {
-        display: flex;
-        justify-content: space-between;
-        gap: 24px;
-        padding: 18px 0;
-        border-bottom: 1px solid #eee;
-        color: #111;
-        text-decoration: none;
-      }
-
-      .post-item:hover strong {
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
-
-      .post-item span {
-        display: grid;
-        gap: 6px;
-      }
-
-      .post-item strong {
-        font-size: 16px;
-        font-weight: 600;
-      }
-
-      .post-item small {
-        color: #666;
-        font-size: 14px;
-        line-height: 1.5;
-      }
-
-      .post-item time {
-        flex: 0 0 auto;
-        color: #888;
-        font-size: 14px;
-        font-feature-settings: "tnum";
-        white-space: nowrap;
-      }
-
       .contact {
         padding-bottom: 96px;
       }
 
-      .tool-note {
-        margin: 24px 0 0;
-        color: #777;
-        font-size: 13px;
-      }
-
-      .tool-note a {
-        color: inherit;
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
-
       @media (max-width: 640px) {
-        .topbar-inner {
-          align-items: flex-start;
-          gap: 12px;
-          padding: 12px 18px;
-        }
-
-        .nav {
-          justify-content: flex-end;
-          flex-wrap: wrap;
-          gap: 10px 14px;
-        }
-
-        .nav a {
-          font-size: 13px;
-        }
 
         .hero {
           padding-inline: 18px;
@@ -625,8 +385,7 @@ const latestPosts = posts
           padding: 24px 0;
         }
 
-        .section-heading,
-        .post-item {
+        .section-heading {
           align-items: flex-start;
           flex-direction: column;
           gap: 10px;
@@ -634,5 +393,4 @@ const latestPosts = posts
 
       }
     </style>
-  </body>
-</html>
+</Layout>

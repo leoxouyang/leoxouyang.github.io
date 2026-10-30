@@ -1,22 +1,85 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href="/images/site-logo.png" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+---
+import Header from "../components/Header.astro";
+import PageTransition from "../components/PageTransition.astro";
+import { site } from "../site";
+
+interface Props {
+  title: string;
+  description: string;
+  /** html lang attribute, e.g. "en" or "zh-CN" */
+  lang?: string;
+  /** initial language for pages with the 中/EN toggle */
+  dataLang?: "zh" | "en";
+  ogImage?: string;
+  noindex?: boolean;
+  /** which nav item to highlight */
+  active?: "cv" | "portfolio";
+  languageToggle?: boolean;
+  print?: boolean;
+}
+
+const {
+  title,
+  description,
+  lang = "en",
+  dataLang,
+  ogImage = "/images/og-image.png",
+  noindex = false,
+  active,
+  languageToggle = false,
+  print = false,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
+const ogImageUrl = new URL(ogImage, Astro.site ?? site.url).href;
+const ogLocale = lang.startsWith("zh") ? "zh_CN" : "en_US";
+---
+
+<html lang={lang} data-lang={dataLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={site.name} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${site.name} — research, data, insight`} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap.xml" />
+    <PageTransition />
+  </head>
+
+  <body>
+    <Header active={active} languageToggle={languageToggle} print={print} />
+    <slot />
+  </body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+  }
 </style>

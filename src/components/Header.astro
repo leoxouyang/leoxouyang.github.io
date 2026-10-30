@@ -1,0 +1,139 @@
+---
+import LanguageToggle from "./LanguageToggle.astro";
+import { site } from "../site";
+
+interface Props {
+  active?: "cv" | "portfolio";
+  languageToggle?: boolean;
+  print?: boolean;
+}
+
+const { active, languageToggle = false, print = false } = Astro.props;
+---
+
+<header class="topbar" transition:name="site-header" transition:animate="none">
+  <div class="topbar-inner">
+    <a class="brand" href="/" aria-label={`${site.name} — home`}>
+      <img
+        class="brand-logo"
+        src="/images/logo.webp"
+        alt=""
+        width="40"
+        height="40"
+      />
+    </a>
+    <div class="topbar-actions">
+      <nav class="nav" aria-label="Primary navigation">
+        <a
+          href="/cv"
+          class:list={{ active: active === "cv" }}
+          aria-current={active === "cv" ? "page" : undefined}>CV</a
+        >
+        <a
+          href="/portfolio"
+          class:list={{ active: active === "portfolio" }}
+          aria-current={active === "portfolio" ? "page" : undefined}
+          >Portfolio</a
+        >
+        <a href={site.linkedinUrl} rel="noreferrer">LinkedIn</a>
+        {
+          print && (
+            <button class="print-link" type="button" onclick="window.print()">
+              Print
+            </button>
+          )
+        }
+      </nav>
+      {languageToggle && <LanguageToggle />}
+    </div>
+  </div>
+</header>
+
+<style>
+  .topbar {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 100;
+    border-bottom: 1px solid #ececec;
+    background: rgb(255 255 255 / 94%);
+    backdrop-filter: blur(14px);
+  }
+
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 64px;
+    padding: 12px clamp(18px, 4vw, 54px);
+  }
+
+  .brand {
+    display: inline-flex;
+  }
+
+  .brand-logo {
+    display: block;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  .topbar-actions,
+  .nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .topbar-actions {
+    gap: 18px;
+  }
+
+  .nav {
+    gap: clamp(13px, 2vw, 25px);
+  }
+
+  .nav a,
+  .print-link {
+    border: 0;
+    padding: 4px 0;
+    background: transparent;
+    color: #666;
+    font: inherit;
+    font-size: 14px;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .nav a:hover,
+  .print-link:hover,
+  .nav .active {
+    color: #111;
+  }
+
+  .nav .active {
+    box-shadow: inset 0 -1px #111;
+  }
+
+  @media (max-width: 700px) {
+    .topbar-actions {
+      gap: 14px;
+    }
+
+    .nav {
+      gap: 13px;
+    }
+
+    .nav a,
+    .print-link {
+      font-size: 13px;
+    }
+  }
+
+  @media print {
+    .topbar {
+      display: none;
+    }
+  }
+</style>

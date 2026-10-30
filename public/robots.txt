@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+# Personal resume-editing tool, not part of the public site
+Disallow: /resume/
+
+Sitemap: https://leoxouyang.github.io/sitemap.xml
